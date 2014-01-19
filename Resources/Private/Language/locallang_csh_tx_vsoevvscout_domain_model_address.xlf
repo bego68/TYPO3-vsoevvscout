@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-01-19T20:32:39Z" product-name="vsoevvscout">
+		<header/>
+		<body>
+
+			<trans-unit id="city.description">
+				<source>Ort</source>
+			</trans-unit>
+			<trans-unit id="zip.description">
+				<source>PLZ</source>
+			</trans-unit>
+			<trans-unit id="street.description">
+				<source>Straße</source>
+			</trans-unit>
+			<trans-unit id="country.description">
+				<source>Land</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,17 @@
+
+<label for="lastname">
+	<f:translate key="tx_vsoevvscout_domain_model_player.lastname" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textfield property="lastname" /><br />
+<label for="firstname">
+	<f:translate key="tx_vsoevvscout_domain_model_player.firstname" />
+</label><br />
+	<f:form.textfield property="firstname" /><br />
+<label for="shirtname">
+	<f:translate key="tx_vsoevvscout_domain_model_player.shirtname" />
+</label><br />
+	<f:form.textfield property="shirtname" /><br />
+<label for="birthdate">
+	<f:translate key="tx_vsoevvscout_domain_model_player.birthdate" />
+</label><br />
+	<f:form.textfield property="birthdate"  value="{player.birthdate->f:format.date()}" /><br />

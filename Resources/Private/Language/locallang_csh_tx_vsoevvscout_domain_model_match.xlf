@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-01-19T20:32:39Z" product-name="vsoevvscout">
+		<header/>
+		<body>
+
+			<trans-unit id="gender.description">
+				<source>Geschlecht</source>
+			</trans-unit>
+			<trans-unit id="matchdate.description">
+				<source>Spieldatum</source>
+			</trans-unit>
+			<trans-unit id="homeset1.description">
+				<source>Satz 1 Home</source>
+			</trans-unit>
+			<trans-unit id="homeset2.description">
+				<source>Satz 2 Home</source>
+			</trans-unit>
+			<trans-unit id="homeset3.description">
+				<source>Satz 3 Home</source>
+			</trans-unit>
+			<trans-unit id="homeset4.description">
+				<source>Satz 4 Home</source>
+			</trans-unit>
+			<trans-unit id="homeset5.description">
+				<source>Satz 5 Home</source>
+			</trans-unit>
+			<trans-unit id="homesetgold.description">
+				<source>Golden SET Home</source>
+			</trans-unit>
+			<trans-unit id="guestset1.description">
+				<source>Satz 1 Gast</source>
+			</trans-unit>
+			<trans-unit id="guestset2.description">
+				<source>Satz 2 Gast</source>
+			</trans-unit>
+			<trans-unit id="guestset3.description">
+				<source>Satz 3 Gast</source>
+			</trans-unit>
+			<trans-unit id="guestset4.description">
+				<source>Satz 4 Gast</source>
+			</trans-unit>
+			<trans-unit id="guestset5.description">
+				<source>Satz 5 Gast</source>
+			</trans-unit>
+			<trans-unit id="guestsetgold.description">
+				<source>Golden Set Gast</source>
+			</trans-unit>
+			<trans-unit id="discipline.description">
+				<source>Disziplin</source>
+			</trans-unit>
+			<trans-unit id="competition.description">
+				<source>Wettbewerb</source>
+			</trans-unit>
+			<trans-unit id="homecountry.description">
+				<source>Land Heimteam</source>
+			</trans-unit>
+			<trans-unit id="unit.description">
+				<source>Kader</source>
+			</trans-unit>
+			<trans-unit id="agegroup.description">
+				<source>Altersgruppe</source>
+			</trans-unit>
+			<trans-unit id="guestcountry.description">
+				<source>Land Gastteam</source>
+			</trans-unit>
+			<trans-unit id="homecolor.description">
+				<source>Farbe Heimmannschaft</source>
+			</trans-unit>
+			<trans-unit id="guestcolor.description">
+				<source>Farbe Gastmannschaft</source>
+			</trans-unit>
+			<trans-unit id="homeplayer.description">
+				<source>Spieler Heimmannschaft</source>
+			</trans-unit>
+			<trans-unit id="guestplayer.description">
+				<source>Spieler  Gastmannschaft</source>
+			</trans-unit>
+			<trans-unit id="weather.description">
+				<source>Wetter</source>
+			</trans-unit>
+			<trans-unit id="sun.description">
+				<source>Sonne</source>
+			</trans-unit>
+			<trans-unit id="surface.description">
+				<source>Belag</source>
+			</trans-unit>
+			<trans-unit id="location.description">
+				<source>Wetkampfort</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

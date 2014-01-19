@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-01-19T20:32:39Z" product-name="vsoevvscout">
+		<header/>
+		<body>
+
+			<trans-unit id="tx_vsoevvscout_domain_model_match">
+				<source>Spiel</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.gender">
+				<source>Geschlecht</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.matchdate">
+				<source>Spieldatum</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.homeset1">
+				<source>Satz 1 Home</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.homeset2">
+				<source>Satz 2 Home</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.homeset3">
+				<source>Satz 3 Home</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.homeset4">
+				<source>Satz 4 Home</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.homeset5">
+				<source>Satz 5 Home</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.homesetgold">
+				<source>Golden SET Home</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.guestset1">
+				<source>Satz 1 Gast</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.guestset2">
+				<source>Satz 2 Gast</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.guestset3">
+				<source>Satz 3 Gast</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.guestset4">
+				<source>Satz 4 Gast</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.guestset5">
+				<source>Satz 5 Gast</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.guestsetgold">
+				<source>Golden Set Gast</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.discipline">
+				<source>Disziplin</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.competition">
+				<source>Wettbewerb</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.homecountry">
+				<source>Land Heimteam</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.unit">
+				<source>Kader</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.agegroup">
+				<source>Altersgruppe</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.guestcountry">
+				<source>Land Gastteam</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.homecolor">
+				<source>Farbe Heimmannschaft</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.guestcolor">
+				<source>Farbe Gastmannschaft</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.homeplayer">
+				<source>Spieler Heimmannschaft</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.guestplayer">
+				<source>Spieler  Gastmannschaft</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.weather">
+				<source>Wetter</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.sun">
+				<source>Sonne</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.surface">
+				<source>Belag</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.location">
+				<source>Wetkampfort</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_vsoevvscout_domain_model_discipline">
+				<source>Diszipln</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_discipline.name">
+				<source>Bezeichnung</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_discipline.short">
+				<source>Kurzbezeichnung</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_vsoevvscout_domain_model_competition">
+				<source>Wettbewerb</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_competition.name">
+				<source>Bezeichnug</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_competition.short">
+				<source>kurzbezeichnung</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_competition.discipline">
+				<source>Disziplin</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_vsoevvscout_domain_model_country">
+				<source>Land</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_country.name">
+				<source>Land</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_country.code">
+				<source>Code</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_vsoevvscout_domain_model_unit">
+				<source>Kader</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_unit.name">
+				<source>Bezeichnung</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_unit.short">
+				<source>Kurzbezeichnung</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_vsoevvscout_domain_model_agegroup">
+				<source>Altersgruppe</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_agegroup.name">
+				<source>Bezeichnung</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_agegroup.short">
+				<source>Kurzbezeichnung</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_vsoevvscout_domain_model_color">
+				<source>Farbe</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_color.name">
+				<source>Bezeichnung</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_color.short">
+				<source>Kurzbeschreibung</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_vsoevvscout_domain_model_player">
+				<source>Spieler</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_player.lastname">
+				<source>Nachname</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_player.firstname">
+				<source>Vorname</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_player.shirtname">
+				<source>Trickotname</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_player.birthdate">
+				<source>Geburtsdatum</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_player.country">
+				<source>Land</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_player.functionplayer">
+				<source>Funktion</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_player.discipline">
+				<source>Disziplin</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_vsoevvscout_domain_model_functionplayer">
+				<source>Funktion</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_functionplayer.name">
+				<source>Bezeichnung</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_functionplayer.short">
+				<source>Kurzbezeichnung</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_vsoevvscout_domain_model_weather">
+				<source>Wetter</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_weather.name">
+				<source>Bezeichnung</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_weather.short">
+				<source>Kurzbezeichnung</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_vsoevvscout_domain_model_sun">
+				<source>Sonne</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_sun.name">
+				<source>Bezeichnung</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_sun.short">
+				<source>Kurzbezeichnung</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_vsoevvscout_domain_model_surface">
+				<source>Belag</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_surface.name">
+				<source>Bezeichnung</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_surface.short">
+				<source>Kurzbezeichnung</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_vsoevvscout_domain_model_address">
+				<source>Adresse</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_address.city">
+				<source>Ort</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_address.zip">
+				<source>PLZ</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_address.street">
+				<source>Straße</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_address.country">
+				<source>Land</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_vsoevvscout_domain_model_location">
+				<source>Wettkampfort</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_location.name">
+				<source>Bezeichnung</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_location.short">
+				<source>Kurzbezeichnung</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_location.address">
+				<source>Adresse</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_location.country">
+				<source>Land</source>
+			</trans-unit>
+			
+		</body>
+	</file>
+</xliff>

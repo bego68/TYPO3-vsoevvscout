@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-01-19T20:32:39Z" product-name="vsoevvscout">
+		<header/>
+		<body>
+
+			<trans-unit id="lastname.description">
+				<source>Nachname</source>
+			</trans-unit>
+			<trans-unit id="firstname.description">
+				<source>Vorname</source>
+			</trans-unit>
+			<trans-unit id="shirtname.description">
+				<source>Trickotname</source>
+			</trans-unit>
+			<trans-unit id="birthdate.description">
+				<source>Geburtsdatum</source>
+			</trans-unit>
+			<trans-unit id="country.description">
+				<source>Land</source>
+			</trans-unit>
+			<trans-unit id="functionplayer.description">
+				<source>Funktion</source>
+			</trans-unit>
+			<trans-unit id="discipline.description">
+				<source>Disziplin</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

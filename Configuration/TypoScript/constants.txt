@@ -1,0 +1,15 @@
+
+plugin.tx_vsoevvscout {
+	view {
+		# cat=plugin.tx_vsoevvscout/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:vsoevvscout/Resources/Private/Templates/
+		# cat=plugin.tx_vsoevvscout/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:vsoevvscout/Resources/Private/Partials/
+		# cat=plugin.tx_vsoevvscout/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:vsoevvscout/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_vsoevvscout//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}
