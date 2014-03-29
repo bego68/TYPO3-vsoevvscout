@@ -7,9 +7,12 @@ plugin.tx_vsoevvscout {
 		partialRootPath = EXT:vsoevvscout/Resources/Private/Partials/
 		# cat=plugin.tx_vsoevvscout/file; type=string; label=Path to template layouts (FE)
 		layoutRootPath = EXT:vsoevvscout/Resources/Private/Layouts/
+		# cat=plugin.tx_vsoevvscout/file; type=string; label=Path to css-file (FE)
+		cssFile = EXT:vsoevvscout/Resources/Public/Css/Vsoevvscout.css
+				
 	}
 	persistence {
 		# cat=plugin.tx_vsoevvscout//a; type=string; label=Default storage PID
-		storagePid =
+		storagePid = 3
 	}
 }

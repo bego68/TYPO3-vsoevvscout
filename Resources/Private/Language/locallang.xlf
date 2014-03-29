@@ -7,11 +7,23 @@
 			<trans-unit id="tx_vsoevvscout_domain_model_match">
 				<source>Spiel</source>
 			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.uid">
+				<source>Spielnummer</source>
+			</trans-unit>
 			<trans-unit id="tx_vsoevvscout_domain_model_match.gender">
-				<source>Geschlecht</source>
+				<source>Geschlecht</source> 
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.gender1">
+				<source>männlich</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.gender2">
+				<source>weiblich</source>
 			</trans-unit>
 			<trans-unit id="tx_vsoevvscout_domain_model_match.matchdate">
 				<source>Spieldatum</source>
+			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.result">
+				<source>Ergebnis</source>
 			</trans-unit>
 			<trans-unit id="tx_vsoevvscout_domain_model_match.homeset1">
 				<source>Satz 1 Home</source>

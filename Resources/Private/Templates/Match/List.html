@@ -13,46 +13,26 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="main">
-<h1>Listing for Match</h1>
 
 <f:flashMessages />
 
 <table  class="tx_vsoevvscout" >
 	<tr>
+		<th><f:translate key="tx_vsoevvscout_domain_model_match.uid" /></th>
 		<th><f:translate key="tx_vsoevvscout_domain_model_match.gender" /></th>
 		<th><f:translate key="tx_vsoevvscout_domain_model_match.matchdate" /></th>
-		<th><f:translate key="tx_vsoevvscout_domain_model_match.homeset1" /></th>
-		<th><f:translate key="tx_vsoevvscout_domain_model_match.homeset2" /></th>
-		<th><f:translate key="tx_vsoevvscout_domain_model_match.homeset3" /></th>
-		<th><f:translate key="tx_vsoevvscout_domain_model_match.homeset4" /></th>
-		<th><f:translate key="tx_vsoevvscout_domain_model_match.homeset5" /></th>
-		<th><f:translate key="tx_vsoevvscout_domain_model_match.homesetgold" /></th>
-		<th><f:translate key="tx_vsoevvscout_domain_model_match.guestset1" /></th>
-		<th><f:translate key="tx_vsoevvscout_domain_model_match.guestset2" /></th>
-		<th><f:translate key="tx_vsoevvscout_domain_model_match.guestset3" /></th>
-		<th><f:translate key="tx_vsoevvscout_domain_model_match.guestset4" /></th>
-		<th><f:translate key="tx_vsoevvscout_domain_model_match.guestset5" /></th>
-		<th><f:translate key="tx_vsoevvscout_domain_model_match.guestsetgold" /></th>
+		<th><f:translate key="tx_vsoevvscout_domain_model_match.result" /></th>
 		<th> </th>
 		<th> </th>
 	</tr>
 
 	<f:for each="{matches}" as="match">
 		<tr>
-			<td><f:link.action action="show" arguments="{match : match}"> {match.gender}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{match : match}"> {match.uid}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{match : match}"> <f:translate key="tx_vsoevvscout_domain_model_match.gender{match.gender}" /></f:link.action></td>
 			<td><f:link.action action="show" arguments="{match : match}"> {match.matchdate -> f:format.date()}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{match : match}"> {match.homeset1}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{match : match}"> {match.homeset2}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{match : match}"> {match.homeset3}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{match : match}"> {match.homeset4}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{match : match}"> {match.homeset5}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{match : match}"> {match.homesetgold}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{match : match}"> {match.guestset1}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{match : match}"> {match.guestset2}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{match : match}"> {match.guestset3}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{match : match}"> {match.guestset4}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{match : match}"> {match.guestset5}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{match : match}"> {match.guestsetgold}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{match : match}"> {match.result}</f:link.action></td>
+			
 			<td><f:link.action action="edit" arguments="{match : match}">Edit</f:link.action></td>
 			<td><f:link.action action="delete" arguments="{match : match}">Delete</f:link.action></td>
 		</tr>

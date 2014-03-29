@@ -128,7 +128,7 @@ class Match extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Golden Set Gast
 	 *
 	 * @var integer
-	 * 
+	 * @validate NotEmpty
 	 */
 	protected $guestsetgold = 0;
 
@@ -600,6 +600,7 @@ class Match extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		$result .= ') ';
 		
 		if ( ( $this->homesetgolden + $this->guestsetgolden) >0 ){
+			
 			$result .= ' golden set:' . $this->homesetgolden . ':' . $this->guestsetgolden;
 		}
 		

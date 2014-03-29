@@ -647,3 +647,5 @@ CREATE TABLE tx_vsoevvscout_player_discipline_mm (
 	KEY uid_local (uid_local),
 	KEY uid_foreign (uid_foreign)
 );
+
+

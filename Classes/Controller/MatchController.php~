@@ -108,7 +108,7 @@ class MatchController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	public function updateAction(\Volleyballserver\Vsoevvscout\Domain\Model\Match $match) {
 		
 		$this->matchRepository->update($match);
-		$this->flashMessageContainer->add('Das Spiel wurde gespeichert.');
+		$this->flashMessageContainer->add('Your Match was updated.');
 		$this->redirect('list');
 	}
 
@@ -121,7 +121,7 @@ class MatchController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	public function deleteAction(\Volleyballserver\Vsoevvscout\Domain\Model\Match $match) {
 		
 		$this->matchRepository->remove($match);
-		$this->flashMessageContainer->add('Das Spiel wurde gelöscht.');
+		$this->flashMessageContainer->add('Your Match was removed.');
 		$this->redirect('list');
 	}
 

@@ -1,57 +1,33 @@
 
-<label for="gender">
-	<f:translate key="tx_vsoevvscout_domain_model_match.gender" />
-</label><br />
-	<f:form.textfield property="gender" /><br />
+<label for="gender"><f:translate key="tx_vsoevvscout_domain_model_match.gender" /></label> 
+<f:form.select property="gender" options="{1: 'männlich', 2: 'weiblich'}" /><br />
 <label for="matchdate">
 	<f:translate key="tx_vsoevvscout_domain_model_match.matchdate" />
 </label><br />
-	<f:form.textfield property="matchdate"  value="{match.matchdate->f:format.date()}" /><br />
-<label for="homeset1">
-	<f:translate key="tx_vsoevvscout_domain_model_match.homeset1" />
-</label><br />
-	<f:form.textfield property="homeset1" /><br />
-<label for="homeset2">
-	<f:translate key="tx_vsoevvscout_domain_model_match.homeset2" />
-</label><br />
-	<f:form.textfield property="homeset2" /><br />
-<label for="homeset3">
-	<f:translate key="tx_vsoevvscout_domain_model_match.homeset3" />
-</label><br />
-	<f:form.textfield property="homeset3" /><br />
-<label for="homeset4">
-	<f:translate key="tx_vsoevvscout_domain_model_match.homeset4" />
-</label><br />
-	<f:form.textfield property="homeset4" /><br />
-<label for="homeset5">
-	<f:translate key="tx_vsoevvscout_domain_model_match.homeset5" />
-</label><br />
-	<f:form.textfield property="homeset5" /><br />
-<label for="homesetgold">
-	<f:translate key="tx_vsoevvscout_domain_model_match.homesetgold" />
-</label><br />
-	<f:form.textfield property="homesetgold" /><br />
-<label for="guestset1">
-	<f:translate key="tx_vsoevvscout_domain_model_match.guestset1" />
-</label><br />
-	<f:form.textfield property="guestset1" /><br />
-<label for="guestset2">
-	<f:translate key="tx_vsoevvscout_domain_model_match.guestset2" />
-</label><br />
-	<f:form.textfield property="guestset2" /><br />
-<label for="guestset3">
-	<f:translate key="tx_vsoevvscout_domain_model_match.guestset3" />
-</label><br />
-	<f:form.textfield property="guestset3" /><br />
-<label for="guestset4">
-	<f:translate key="tx_vsoevvscout_domain_model_match.guestset4" />
-</label><br />
-	<f:form.textfield property="guestset4" /><br />
-<label for="guestset5">
-	<f:translate key="tx_vsoevvscout_domain_model_match.guestset5" />
-</label><br />
-	<f:form.textfield property="guestset5" /><br />
-<label for="guestsetgold">
-	<f:translate key="tx_vsoevvscout_domain_model_match.guestsetgold" /> <span class="required">(required)</span>
-</label><br />
-	<f:form.textfield property="guestsetgold" /><br />
+	<f:form.textfield class="date" property="matchdate"  value="{match.matchdate->f:format.date()}" /><br />
+	
+<label for="homeset1"><f:translate key="tx_vsoevvscout_domain_model_match.homeset1" /></label>
+	<f:form.textfield class="set" type="number" additionalAttributes="{min:0}"  property="homeset1" /> : <f:form.textfield class="set" type="number" additionalAttributes="{min:0}"  property="guestset1" />
+	<br />
+<label for="homeset1"><f:translate key="tx_vsoevvscout_domain_model_match.homeset2" /></label>
+	<f:form.textfield class="set" type="number" additionalAttributes="{min:0}"  property="homeset2" /> : <f:form.textfield class="set" type="number" additionalAttributes="{min:0}"  property="guestset2" />
+	<br />
+<label for="homeset1"><f:translate key="tx_vsoevvscout_domain_model_match.homeset3" /></label>
+	<f:form.textfield class="set" type="number" additionalAttributes="{min:0}"  property="homeset3" /> : <f:form.textfield class="set" type="number" additionalAttributes="{min:0}"  property="guestset3" />
+	<br />
+<label for="homeset1"><f:translate key="tx_vsoevvscout_domain_model_match.homeset4" /></label>
+	<f:form.textfield class="set" type="number" additionalAttributes="{min:0}"  property="homeset4" /> : <f:form.textfield class="set" type="number" additionalAttributes="{min:0}"  property="guestset4" />
+	<br />
+<label for="homeset1"><f:translate key="tx_vsoevvscout_domain_model_match.homeset5" /></label>
+	<f:form.textfield class="set" type="number" additionalAttributes="{min:0}"  property="homeset5" /> : <f:form.textfield class="set" type="number" additionalAttributes="{min:0}"  property="guestset5" />
+	<br />
+<label for="homeset1"><f:translate key="tx_vsoevvscout_domain_model_match.homesetgold" /></label>
+	<f:form.textfield class="set" type="number" additionalAttributes="{min:0}"  property="homesetgold" /> : <f:form.textfield class="set" type="number" additionalAttributes="{min:0}"  property="guestsetgold" />
+	<br />
+
+	
+<script>
+window.onload = function () {
+	$( ".date" ).datepicker();
+}	
+</script>	

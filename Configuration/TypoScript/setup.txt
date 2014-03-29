@@ -27,7 +27,7 @@ plugin.tx_vsoevvscout._CSS_DEFAULT_STYLE (
 
 	.tx-vsoevvscout table {
 		border-collapse:separate;
-		border-spacing:10px;
+		border-spacing:1px;
 	}
 
 	.tx-vsoevvscout table th {
@@ -38,3 +38,4 @@ plugin.tx_vsoevvscout._CSS_DEFAULT_STYLE (
 		vertical-align:top;
 	}
 )
+page.includeCSS.tx_vsoevvscout = {$plugin.tx_vsoevvscout.view.cssFile}
