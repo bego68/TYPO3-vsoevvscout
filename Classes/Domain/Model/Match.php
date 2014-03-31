@@ -24,7 +24,8 @@ namespace Volleyballserver\Vsoevvscout\Domain\Model;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use Volleyballserver\Vsoevvscout\Domain\Model\Team;
 /**
  *
  *
@@ -197,20 +198,20 @@ class Match extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $guestcolor;
 
 	/**
-	 * Spieler Heimmannschaft
+	 *  Heimmannschaft
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Player>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Team>
 	 * @lazy
 	 */
-	protected $homeplayer;
+	protected $hometeam;
 
 	/**
 	 * Spieler  Gastmannschaft
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Player>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Team>
 	 * @lazy
 	 */
-	protected $guestplayer;
+	protected $guestteam;
 
 	/**
 	 * Wetter
@@ -266,9 +267,9 @@ class Match extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		 * It will be rewritten on each save in the extension builder
 		 * You may modify the constructor of this class instead
 		 */
-		$this->homeplayer = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->hometeam = new ObjectStorage();
 		
-		$this->guestplayer = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->guestteam = new ObjectStorage();
 	}
 
 	/**
@@ -777,89 +778,89 @@ class Match extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
-	 * Adds a Player
+	 * Adds a team
 	 *
-	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Player $homeplayer
+	 * @param Team $hometeam
 	 * @return void
 	 */
-	public function addHomeplayer(\Volleyballserver\Vsoevvscout\Domain\Model\Player $homeplayer) {
+	public function addHometeam(Team $hometeam) {
 		
-		$this->homeplayer->attach($homeplayer);
+		$this->hometeam->attach($hometeam);
 	}
 
 	/**
-	 * Removes a Player
+	 * Removes a Team
 	 *
-	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Player $homeplayerToRemove The Player to be removed
+	 * @param Team $hometeamToRemove The Team to be removed
 	 * @return void
 	 */
-	public function removeHomeplayer(\Volleyballserver\Vsoevvscout\Domain\Model\Player $homeplayerToRemove) {
+	public function removeHometeam(Team $hometeamToRemove) {
 		
-		$this->homeplayer->detach($homeplayerToRemove);
+		$this->hometeam->detach($hometeamToRemove);
 	}
 
 	/**
-	 * Returns the homeplayer
+	 * Returns the hometeam
 	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Player> $homeplayer
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Team> $hometeam
 	 */
-	public function getHomeplayer() {
+	public function getHometeam() {
 		
-		return $this->homeplayer;
+		return $this->hometeam;
 	}
 
 	/**
-	 * Sets the homeplayer
+	 * Sets the hometeam
 	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Player> $homeplayer
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Team> $hometeam
 	 * @return void
 	 */
-	public function setHomeplayer(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $homeplayer) {
+	public function setHometeam(ObjectStorage $hometeam) {
 		
-		$this->homeplayer = $homeplayer;
+		$this->hometeam = $hometeam;
 	}
 
 	/**
-	 * Adds a Player
+	 * Adds a Team
 	 *
-	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Player $guestplayer
+	 * @param Team $guestteam
 	 * @return void
 	 */
-	public function addGuestplayer(\Volleyballserver\Vsoevvscout\Domain\Model\Player $guestplayer) {
+	public function addGuestteam(Team $guestteam) {
 		
-		$this->guestplayer->attach($guestplayer);
+		$this->guestteam->attach($guestteam);
 	}
 
 	/**
-	 * Removes a Player
+	 * Removes a Team
 	 *
-	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Player $guestplayerToRemove The Player to be removed
+	 * @param Team $guestteamToRemove The Team to be removed
 	 * @return void
 	 */
-	public function removeGuestplayer(\Volleyballserver\Vsoevvscout\Domain\Model\Player $guestplayerToRemove) {
+	public function removeGuestteam(Team $guestteamToRemove) {
 		
-		$this->guestplayer->detach($guestplayerToRemove);
+		$this->guestteam->detach($guestteamToRemove);
 	}
 
 	/**
-	 * Returns the guestplayer
+	 * Returns the guestteam
 	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Player> $guestplayer
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Team> $guestteam
 	 */
-	public function getGuestplayer() {
+	public function getGuestteam() {
 		
-		return $this->guestplayer;
+		return $this->guestteam;
 	}
 
 	/**
-	 * Sets the guestplayer
+	 * Sets the guestteam
 	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Player> $guestplayer
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Team> $guestteam
 	 * @return void
 	 */
-	public function setGuestplayer(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $guestplayer) {
+	public function setGuestteam(ObjectStorage $guestteam) {
 		
-		$this->guestplayer = $guestplayer;
+		$this->guestteam = $guestteam;
 	}
 
 	/**

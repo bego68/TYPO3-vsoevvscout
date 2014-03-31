@@ -24,14 +24,16 @@ namespace Volleyballserver\Vsoevvscout\Domain\Model;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
+ * Modell Discipline
  *
- *
+ * @package Vsoevvscout
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
+ * @author Berti Golf <info@berti-golf.de>
  */
-class Discipline extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class Discipline extends AbstractEntity {
 
 	/**
 	 * Bezeichnung

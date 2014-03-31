@@ -1,6 +1,5 @@
 <?php
 namespace Volleyballserver\Vsoevvscout\Controller;
-
 /***************************************************************
  *  Copyright notice
  *
@@ -25,13 +24,15 @@ namespace Volleyballserver\Vsoevvscout\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use  TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use  Volleyballserver\Vsoevvscout\Domain\Model\Player;
 /**
  *
- *
+ * @package Vsoevvscout
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
+ * @author Berti Golf <info@berti-golf.de>
  */
-class PlayerController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+class PlayerController extends ActionController {
 
 	/**
 	 * action list
@@ -47,10 +48,10 @@ class PlayerController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
 	/**
 	 * action show
 	 *
-	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Player $player
+	 * @param Player $player
 	 * @return void
 	 */
-	public function showAction(\Volleyballserver\Vsoevvscout\Domain\Model\Player $player) {
+	public function showAction(Player $player) {
 		
 		$this->view->assign('player', $player);
 	}
@@ -58,11 +59,11 @@ class PlayerController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
 	/**
 	 * action new
 	 *
-	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Player $newPlayer
+	 * @param Player $newPlayer
 	 * @dontvalidate $newPlayer
 	 * @return void
 	 */
-	public function newAction(\Volleyballserver\Vsoevvscout\Domain\Model\Player $newPlayer = NULL) {
+	public function newAction(Player $newPlayer = NULL) {
 		
 		$this->view->assign('newPlayer', $newPlayer);
 	}
@@ -70,10 +71,10 @@ class PlayerController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
 	/**
 	 * action create
 	 *
-	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Player $newPlayer
+	 * @param Player $newPlayer
 	 * @return void
 	 */
-	public function createAction(\Volleyballserver\Vsoevvscout\Domain\Model\Player $newPlayer) {
+	public function createAction(Player $newPlayer) {
 		
 		$this->playerRepository->add($newPlayer);
 		$this->flashMessageContainer->add('Your new Player was created.');
@@ -83,10 +84,10 @@ class PlayerController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
 	/**
 	 * action edit
 	 *
-	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Player $player
+	 * @param Player $player
 	 * @return void
 	 */
-	public function editAction(\Volleyballserver\Vsoevvscout\Domain\Model\Player $player) {
+	public function editAction(Player $player) {
 		
 		$this->view->assign('player', $player);
 	}
@@ -94,10 +95,10 @@ class PlayerController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
 	/**
 	 * action update
 	 *
-	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Player $player
+	 * @param Player $player
 	 * @return void
 	 */
-	public function updateAction(\Volleyballserver\Vsoevvscout\Domain\Model\Player $player) {
+	public function updateAction(Player $player) {
 		
 		$this->playerRepository->update($player);
 		$this->flashMessageContainer->add('Your Player was updated.');
@@ -105,4 +106,3 @@ class PlayerController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
 	}
 
 }
-?>

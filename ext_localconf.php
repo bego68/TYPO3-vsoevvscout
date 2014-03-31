@@ -1,9 +1,11 @@
 <?php
+use \TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+
 if (!defined('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+ExtensionUtility::configurePlugin(
 	'Volleyballserver.' . $_EXTKEY,
 	'Pi1',
 	array(
@@ -23,4 +25,6 @@ if (!defined('TYPO3_MODE')) {
 	)
 );
 
-?>
+//include_once(t3lib_extMgm::extPath($_EXTKEY).'Classes/Command/VsoevvscoutCommandController.php');
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['extbase']['commandControllers'][] = 'Volleyballserver\\Vsoevvscout\\Command\\VsoevvscoutCommandController';
+

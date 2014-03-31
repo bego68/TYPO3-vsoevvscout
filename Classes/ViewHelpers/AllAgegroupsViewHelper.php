@@ -23,7 +23,8 @@ namespace Volleyballserver\Vsoevvscout\ViewHelpers;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use Volleyballserver\Vsoevvscout\Domain\Repository\AgegroupRepository;
 /**
  *
  *
@@ -31,12 +32,12 @@ namespace Volleyballserver\Vsoevvscout\ViewHelpers;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class AllAgegroupsViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class AllAgegroupsViewHelper extends AbstractViewHelper {
 
 	/**
 	 * AgegroupRepository
 	 *
-	 * @var \Volleyballserver\Vsoevvscout\Domain\Repository\AgegroupRepository
+	 * @var AgegroupRepository
 	 * @inject
 	 */
 	protected $agegroupRepository;

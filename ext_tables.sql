@@ -28,8 +28,8 @@ CREATE TABLE tx_vsoevvscout_domain_model_match (
 	guestcountry int(11) unsigned DEFAULT '0',
 	homecolor int(11) unsigned DEFAULT '0',
 	guestcolor int(11) unsigned DEFAULT '0',
-	homeplayer int(11) unsigned DEFAULT '0' NOT NULL,
-	guestplayer int(11) unsigned DEFAULT '0' NOT NULL,
+	hometeam int(11) unsigned DEFAULT '0' NOT NULL,
+	guestteam int(11) unsigned DEFAULT '0' NOT NULL,
 	weather int(11) unsigned DEFAULT '0',
 	sun int(11) unsigned DEFAULT '0',
 	surface int(11) unsigned DEFAULT '0',
@@ -328,6 +328,7 @@ CREATE TABLE tx_vsoevvscout_domain_model_player (
 	country int(11) unsigned DEFAULT '0',
 	functionplayer int(11) unsigned DEFAULT '0',
 	discipline int(11) unsigned DEFAULT '0' NOT NULL,
+	team int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -609,10 +610,12 @@ CREATE TABLE tx_vsoevvscout_domain_model_location (
 
 );
 
+
+
 #
-# Table structure for table 'tx_vsoevvscout_match_player_mm'
+# Table structure for table 'tx_vsoevvscout_match_guestteam_team_mm'
 #
-CREATE TABLE tx_vsoevvscout_match_player_mm (
+CREATE TABLE tx_vsoevvscout_match_guestteam_team_mm (
 	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
 	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
 	sorting int(11) unsigned DEFAULT '0' NOT NULL,
@@ -623,9 +626,9 @@ CREATE TABLE tx_vsoevvscout_match_player_mm (
 );
 
 #
-# Table structure for table 'tx_vsoevvscout_match_guestplayer_player_mm'
+# Table structure for table 'tx_vsoevvscout_match_hometeam_team_mm'
 #
-CREATE TABLE tx_vsoevvscout_match_guestplayer_player_mm (
+CREATE TABLE tx_vsoevvscout_match_hometeam_team_mm (
 	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
 	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
 	sorting int(11) unsigned DEFAULT '0' NOT NULL,
@@ -634,6 +637,7 @@ CREATE TABLE tx_vsoevvscout_match_guestplayer_player_mm (
 	KEY uid_local (uid_local),
 	KEY uid_foreign (uid_foreign)
 );
+
 
 #
 # Table structure for table 'tx_vsoevvscout_player_discipline_mm'
@@ -647,5 +651,3 @@ CREATE TABLE tx_vsoevvscout_player_discipline_mm (
 	KEY uid_local (uid_local),
 	KEY uid_foreign (uid_foreign)
 );
-
-

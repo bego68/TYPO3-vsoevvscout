@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_vsoevvscout_domain_model_match'] = array(
 	'ctrl' => $TCA['tx_vsoevvscout_domain_model_match']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, gender, matchdate, homeset1, homeset2, homeset3, homeset4, homeset5, homesetgold, guestset1, guestset2, guestset3, guestset4, guestset5, guestsetgold, discipline, competition, homecountry, unit, agegroup, guestcountry, homecolor, guestcolor, homeplayer, guestplayer, weather, sun, surface, location',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, gender, matchdate, homeset1, homeset2, homeset3, homeset4, homeset5, homesetgold, guestset1, guestset2, guestset3, guestset4, guestset5, guestsetgold, discipline, competition, homecountry, unit, agegroup, guestcountry, homecolor, guestcolor, hometeam, guestteam, weather, sun, surface, location',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, gender, matchdate, homeset1, homeset2, homeset3, homeset4, homeset5, homesetgold, guestset1, guestset2, guestset3, guestset4, guestset5, guestsetgold, discipline, competition, homecountry, unit, agegroup, guestcountry, homecolor, guestcolor, homeplayer, guestplayer, weather, sun, surface, location,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, gender, matchdate, homeset1, homeset2, homeset3, homeset4, homeset5, homesetgold, guestset1, guestset2, guestset3, guestset4, guestset5, guestsetgold, discipline, competition, homecountry, unit, agegroup, guestcountry, homecolor, guestcolor, hometeam, guestteam, weather, sun, surface, location,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -366,13 +366,13 @@ $TCA['tx_vsoevvscout_domain_model_match'] = array(
 				),
 			),
 		),
-		'homeplayer' => array(
+		'hometeam' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_match.homeplayer',
+			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_match.hometeam',
 			'config' => array(
 				'type' => 'select',
-				'foreign_table' => 'tx_vsoevvscout_domain_model_player',
-				'MM' => 'tx_vsoevvscout_match_player_mm',
+				'foreign_table' => 'tx_vsoevvscout_domain_model_team',
+				'MM' => 'tx_vsoevvscout_match_team_mm',
 				'size' => 10,
 				'autoSizeMax' => 30,
 				'maxitems' => 9999,
@@ -393,7 +393,7 @@ $TCA['tx_vsoevvscout_domain_model_match'] = array(
 						'title' => 'Create new',
 						'icon' => 'add.gif',
 						'params' => array(
-							'table' => 'tx_vsoevvscout_domain_model_player',
+							'table' => 'tx_vsoevvscout_domain_model_team',
 							'pid' => '###CURRENT_PID###',
 							'setValue' => 'prepend'
 							),
@@ -402,13 +402,13 @@ $TCA['tx_vsoevvscout_domain_model_match'] = array(
 				),
 			),
 		),
-		'guestplayer' => array(
+		'guestteam' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_match.guestplayer',
+			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_match.guestteam',
 			'config' => array(
 				'type' => 'select',
-				'foreign_table' => 'tx_vsoevvscout_domain_model_player',
-				'MM' => 'tx_vsoevvscout_match_guestplayer_player_mm',
+				'foreign_table' => 'tx_vsoevvscout_domain_model_team',
+				'MM' => 'tx_vsoevvscout_match_guestteam_team_mm',
 				'size' => 10,
 				'autoSizeMax' => 30,
 				'maxitems' => 9999,
@@ -429,7 +429,7 @@ $TCA['tx_vsoevvscout_domain_model_match'] = array(
 						'title' => 'Create new',
 						'icon' => 'add.gif',
 						'params' => array(
-							'table' => 'tx_vsoevvscout_domain_model_player',
+							'table' => 'tx_vsoevvscout_domain_model_team',
 							'pid' => '###CURRENT_PID###',
 							'setValue' => 'prepend'
 							),

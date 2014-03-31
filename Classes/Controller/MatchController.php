@@ -24,6 +24,9 @@ namespace Volleyballserver\Vsoevvscout\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use Volleyballserver\Vsoevvscout\Domain\Repository\MatchRepository;
+use Volleyballserver\Vsoevvscout\Domain\Model\Match;
 
 /**
  *
@@ -31,7 +34,7 @@ namespace Volleyballserver\Vsoevvscout\Controller;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class MatchController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+class MatchController extends ActionController {
 
 	/**
 	 * matchRepository
@@ -55,10 +58,10 @@ class MatchController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	/**
 	 * action show
 	 *
-	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Match $match
+	 * @param Match $match
 	 * @return void
 	 */
-	public function showAction(\Volleyballserver\Vsoevvscout\Domain\Model\Match $match) {
+	public function showAction(Match $match) {
 		
 		$this->view->assign('match', $match);
 	}
@@ -66,11 +69,11 @@ class MatchController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	/**
 	 * action new
 	 *
-	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Match $newMatch
+	 * @param Match $newMatch
 	 * @dontvalidate $newMatch
 	 * @return void
 	 */
-	public function newAction(\Volleyballserver\Vsoevvscout\Domain\Model\Match $newMatch = NULL) {
+	public function newAction(Match $newMatch = NULL) {
 		
 		$this->view->assign('newMatch', $newMatch);
 	}
@@ -78,10 +81,10 @@ class MatchController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	/**
 	 * action create
 	 *
-	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Match $newMatch
+	 * @param Match $newMatch
 	 * @return void
 	 */
-	public function createAction(\Volleyballserver\Vsoevvscout\Domain\Model\Match $newMatch) {
+	public function createAction(Match $newMatch) {
 		
 		$this->matchRepository->add($newMatch);
 		$this->flashMessageContainer->add('Your new Match was created.');
@@ -91,10 +94,10 @@ class MatchController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	/**
 	 * action edit
 	 *
-	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Match $match
+	 * @param Match $match
 	 * @return void
 	 */
-	public function editAction(\Volleyballserver\Vsoevvscout\Domain\Model\Match $match) {
+	public function editAction(Match $match) {
 		
 		$this->view->assign('match', $match);
 	}
@@ -102,10 +105,10 @@ class MatchController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	/**
 	 * action update
 	 *
-	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Match $match
+	 * @param Match $match
 	 * @return void
 	 */
-	public function updateAction(\Volleyballserver\Vsoevvscout\Domain\Model\Match $match) {
+	public function updateAction(Match $match) {
 		
 		$this->matchRepository->update($match);
 		$this->flashMessageContainer->add('Das Spiel wurde gespeichert.');
@@ -115,10 +118,10 @@ class MatchController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	/**
 	 * action delete
 	 *
-	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Match $match
+	 * @param Match $match
 	 * @return void
 	 */
-	public function deleteAction(\Volleyballserver\Vsoevvscout\Domain\Model\Match $match) {
+	public function deleteAction(Match $match) {
 		
 		$this->matchRepository->remove($match);
 		$this->flashMessageContainer->add('Das Spiel wurde gelöscht.');

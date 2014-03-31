@@ -110,8 +110,9 @@ $TCA['tx_vsoevvscout_domain_model_agegroup'] = array(
 			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_agegroup.short',
 			'config' => array(
 				'type' => 'input',
-				'size' => 30,
-				'eval' => 'trim,required'
+				'max' => 2,
+				'size' => 2,
+				'eval' => 'trim,required,upper'
 			),
 		),
 	),

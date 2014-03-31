@@ -110,8 +110,8 @@ $TCA['tx_vsoevvscout_domain_model_country'] = array(
 			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_country.code',
 			'config' => array(
 				'type' => 'input',
-				'size' => 30,
-				'eval' => 'trim'
+				'size' => 3,
+				'eval' => 'trim, ,required,upper'
 			),
 		),
 	),

@@ -111,7 +111,7 @@ $TCA['tx_vsoevvscout_domain_model_location'] = array(
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
-				'eval' => 'trim'
+				'eval' => 'trim,required,upper'
 			),
 		),
 		'address' => array(

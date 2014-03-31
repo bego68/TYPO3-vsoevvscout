@@ -110,8 +110,8 @@ $TCA['tx_vsoevvscout_domain_model_competition'] = array(
 			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_competition.short',
 			'config' => array(
 				'type' => 'input',
-				'size' => 30,
-				'eval' => 'trim,required'
+				'size' => 10,
+				'eval' => 'trim,required,upper'
 			),
 		),
 		'discipline' => array(

@@ -28,11 +28,11 @@ namespace Volleyballserver\Vsoevvscout\Domain\Repository;
 use \TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
- * Match Repository
+ * Player Repository
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  * @author Berti Golf <info@berti-golf.de>
  */
-class MatchRepository extends Repository {
+class PlayerRepository extends Repository {
 
 }
