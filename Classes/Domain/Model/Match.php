@@ -24,15 +24,18 @@ namespace Volleyballserver\Vsoevvscout\Domain\Model;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use \TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use Volleyballserver\Vsoevvscout\Domain\Model\Team;
+
 /**
  *
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Match extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class Match extends AbstractEntity {
 
 	/**
 	 * Geschlecht
@@ -200,7 +203,7 @@ class Match extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 *  Heimmannschaft
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Team>
+	 * @var \Volleyballserver\Vsoevvscout\Domain\Model\Team
 	 * @lazy
 	 */
 	protected $hometeam;
@@ -208,11 +211,20 @@ class Match extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Spieler  Gastmannschaft
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Team>
+	 * @var \Volleyballserver\Vsoevvscout\Domain\Model\Team
 	 * @lazy
 	 */
 	protected $guestteam;
-
+	
+	/**
+	 * file
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+	 * @lazy
+	 */
+	protected $file;
+	
+	
 	/**
 	 * Wetter
 	 *
@@ -267,9 +279,8 @@ class Match extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		 * It will be rewritten on each save in the extension builder
 		 * You may modify the constructor of this class instead
 		 */
-		$this->hometeam = new ObjectStorage();
+		$this->file = new ObjectStorage();
 		
-		$this->guestteam = new ObjectStorage();
 	}
 
 	/**
@@ -778,31 +789,48 @@ class Match extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
-	 * Adds a team
+	 * Adds a file
 	 *
-	 * @param Team $hometeam
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $file
 	 * @return void
 	 */
-	public function addHometeam(Team $hometeam) {
-		
-		$this->hometeam->attach($hometeam);
+	public function addFile(FileReference $file) {		
+		$this->file->attach($file);
 	}
 
 	/**
-	 * Removes a Team
+	 * Removes a file
 	 *
-	 * @param Team $hometeamToRemove The Team to be removed
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $file
 	 * @return void
 	 */
-	public function removeHometeam(Team $hometeamToRemove) {
-		
-		$this->hometeam->detach($hometeamToRemove);
+	public function removeFile(FileReference $fileToRemove) {		
+		$this->file->detach($fileToRemove);
+	}
+	/**
+	 * sets  File
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $file
+	 *
+	 * @return void
+	 */
+	public function setFile($file) {
+		$this->file = $file;
+	}
+	
+	/**
+	 * get the Files
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+	 */
+	public function getFile() {
+		return $this->file;
 	}
 
 	/**
 	 * Returns the hometeam
 	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Team> $hometeam
+	 * @return \Volleyballserver\Vsoevvscout\Domain\Model\Team $hometeam
 	 */
 	public function getHometeam() {
 		
@@ -812,40 +840,19 @@ class Match extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the hometeam
 	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Team> $hometeam
+	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Team $hometeam
 	 * @return void
 	 */
-	public function setHometeam(ObjectStorage $hometeam) {
+	public function setHometeam(Team $hometeam) {
 		
 		$this->hometeam = $hometeam;
 	}
 
-	/**
-	 * Adds a Team
-	 *
-	 * @param Team $guestteam
-	 * @return void
-	 */
-	public function addGuestteam(Team $guestteam) {
-		
-		$this->guestteam->attach($guestteam);
-	}
-
-	/**
-	 * Removes a Team
-	 *
-	 * @param Team $guestteamToRemove The Team to be removed
-	 * @return void
-	 */
-	public function removeGuestteam(Team $guestteamToRemove) {
-		
-		$this->guestteam->detach($guestteamToRemove);
-	}
-
+	
 	/**
 	 * Returns the guestteam
 	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Team> $guestteam
+	 * @return \Volleyballserver\Vsoevvscout\Domain\Model\Team $guestteam
 	 */
 	public function getGuestteam() {
 		
@@ -855,10 +862,10 @@ class Match extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the guestteam
 	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Team> $guestteam
+	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Team $guestteam
 	 * @return void
 	 */
-	public function setGuestteam(ObjectStorage $guestteam) {
+	public function setGuestteam(Team $guestteam) {
 		
 		$this->guestteam = $guestteam;
 	}

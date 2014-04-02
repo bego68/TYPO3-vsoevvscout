@@ -25,13 +25,14 @@ namespace Volleyballserver\Vsoevvscout\Command;
 ***************************************************************/
 	use TYPO3\CMS\Extbase\Mvc\Controller\CommandController;
 	use TYPO3\CMS\Core\Resource\File;
-	use \TYPO3\CMS\Core\Utility\GeneralUtility;
+	use TYPO3\CMS\Core\Utility\GeneralUtility;
 	use Volleyballserver\Vsoevvscout\Domain\Model\Discipline;
-	
-	
+	use Volleyballserver\Vsoevvscout\Domain\Model\Player;
+	use Volleyballserver\Vsoevvscout\Domain\Model\Team;
+	use Volleyballserver\Vsoevvscout\Domain\Model\Match;	
 	
 /**
- * Comand for TYPO3 schedueller
+ * Command for TYPO3 schedueller
  *
  * @package Vsoevvscout
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
@@ -44,48 +45,58 @@ class VsoevvscoutCommandController extends CommandController {
      * 
      * @var integer
      */
-    protected $pid=3;
+    protected $pid = 3;
     
+    /**
+     * errorMessage
+     *
+     * @var array
+     */
+    protected $errorMessage = array();
     
-    protected FileNamePattern = array (
+    /**
+     * FileNamePattern
+     * 
+     * @var array
+     */
+    protected $fileNamePattern = array (
     	
     	'Halle' => array(
-    			array('Match' =>
+    			'Match' =>
     				array(
-    						uid => 0,
-    						kind => 1,
-    						year => 2,
-    						month => 3,
-    						day => 4,
-    						location => 5,
-    						competition => 6,
-    						homecountry => 7,
-    						guestcountry => 7,
-    						)
-    			)
-    	)
+    						'uid' => 0,
+    						'kind' => 1,
+    						'year' => 2,
+    						'month' => 3,
+    						'day' => 4,
+    						'location' => 5,
+    						'competition' => 6,
+    						'homecountry' => 7,
+    						'guestcountry' => 8,
+    				),
+    			
+    	),
     	'Beach' => array(
-    			array('Match' =>
+    			'Match' =>
     					array(
-    						uid => 0,
-    						kind => 1,
-    						year => 2,
-    						month => 3,
-    						day => 4,
-    						location => 5,
-    						competition => 6,
-    						hometeam.name => 7,
-    						guestteam.name=> 7,
-    						)
+    						'uid' => 0,
+    						'year' => 1,
+    						'month' => 1,
+    						'day' => 3,
+    						'location' => 4,
+    						'competition' => 5, 
+    						'hometeam.name' => 6,
+    						'guestteam.name' => 7,
+    			),
+    			'Player' =>
+    					array(
+    							'uid' => 0,
+    							'name' => 1,
     			)
     					
-    			)
     	)
-        		
-    		
-    )
-    }
-    
+    );
+ 
     /**
 	 * storageRepository
 	 *
@@ -97,7 +108,7 @@ class VsoevvscoutCommandController extends CommandController {
 	/**
 	 * fileRepository
 	 *
-	 * @var TYPO3\CMS\Core\Resource\FileRepository
+	 * @var \TYPO3\CMS\Core\Resource\FileRepository
 	 * @inject
 	 */
 	protected $fileRepository;
@@ -106,7 +117,7 @@ class VsoevvscoutCommandController extends CommandController {
 	/**
 	 * MatchRepository
 	 *
-	 * @var Volleyballserver\Vsoevvscout\Domain\Repository\MatchRepository
+	 * @var \Volleyballserver\Vsoevvscout\Domain\Repository\MatchRepository
 	 * @inject
 	 */
 	protected $matchRepository;
@@ -115,7 +126,7 @@ class VsoevvscoutCommandController extends CommandController {
 	/**
 	 * TeamRepository
 	 *
-	 * @var Volleyballserver\Vsoevvscout\Domain\Repository\TeamRepository
+	 * @var \Volleyballserver\Vsoevvscout\Domain\Repository\TeamRepository
 	 * @inject
 	 */
 	protected $teamRepository;
@@ -123,7 +134,7 @@ class VsoevvscoutCommandController extends CommandController {
 	/**
 	 * playerRepository
 	 *
-	 * @var Volleyballserver\Vsoevvscout\Domain\Repository\PlayerRepository
+	 * @var \Volleyballserver\Vsoevvscout\Domain\Repository\PlayerRepository
 	 * @inject
 	 */
 	protected $playerRepository;
@@ -131,19 +142,21 @@ class VsoevvscoutCommandController extends CommandController {
 	/**
 	 * DisciplineRepository
 	 *
-	 * @var Volleyballserver\Vsoevvscout\Domain\Repository\DisciplineRepository
+	 * @var \Volleyballserver\Vsoevvscout\Domain\Repository\DisciplineRepository
 	 * @inject
 	 */
 	protected $disciplineRepository;
 	
-	// public function initialize
+	
 
 	/**
+	 * getFileInfoFromIdentifier
+	 * 
 	 * array(6) {
 	 * 	[0]=> string(0) ""
   	 * 	[1]=>  string(8) "scaut.me"
 	 *  [2]=>  string(8) "scaut.me"
-	 *  [3]=>  string(5) "Beach"   // Diszipline
+	 *  [3]=>  string(5) "Beach"   // Discipline
 	 *  [4]=>  string(7) "Matches" // Matches/Teams/Players/
 	 *  [5]=>  string(59) "D_2013_08_03_EM_Klagenfurt_LilianaBaquerizo-HoltwickSemmler"
 	 *  [6]=>  string(64) "&d_2013_08_02_em_klagenfurt_baquerizoliliana-holtwicksemmler.dvw"
@@ -152,9 +165,12 @@ class VsoevvscoutCommandController extends CommandController {
 	 * 
 	 * 
 	 * @param File $file
-	 * @return array
+	 * @return boolean
 	 */
-	private function getFileInfoFromIdentifier($file){
+	private function addFileWithInfoFromIdentifier($file){
+		
+		/** @verg boolean 	 */
+		$fileAssosiciated = FALSE;
 		
 		/** @var array 	 */
 		$info = array();
@@ -162,113 +178,105 @@ class VsoevvscoutCommandController extends CommandController {
 		/** @var array 	 */
 		$fileIdentifierArray = explode('/', $file->getIdentifier());
 		
-		/** @var Diszipline 	 */
-		$diszipline = $this->getDiszplineFromIdentifier($fileIdentifierArray[3]);
+		/** @var Discipline 	 */
+		$discipline = $this->getDiszplineFromIdentifier($fileIdentifierArray[3]); //Beach, Halle,...
 		
+		/** @var string 	 */
+		$subFolder1 = $fileIdentifierArray[4]; //Matches, Players, Teams
+		$subFolder2 = $fileIdentifierArray[5]; // f.e. D_2013_08_03_EM_Klagenfurt_LilianaBaquerizo-HoltwickSemmler 
+		switch($subFolder1){
+			case 'Matches':	
+				$fileAssosiciated = $this->addFileToMatch($file,$subFolder2,$discipline);
+				break;
+			case 'Teams':
+				$fileAssosiciated = $this->addFileToTeam($file,$subFolder2,$discipline);
+				break;
+			case 'Players':
+				$fileAssosiciated = $this->addFileToPlayer($file,$subFolder2,$discipline);
+			break;
+			default:
+				$fileAssosiciated = false;
+				$error[] = 'error 1396289866: The file must be in one of the subfolders Matches, Teams or Players ' . $file->getIdentifier();
+			
+		}		
 		
 		var_dump($fileIdentifierArray); die('Hallo');
-		
-		$info = array();
-		$info['jahr'] = $fileInfoArr[1];
-		$info['interneid'] = $fileInfoArr[2];
-		//$_GET['DEBUGSQL'] = 1;
-		$veranstaltung = $this->veranstaltungenRepository->findOneByInterneid($info['interneid']);
-		
-		if( $veranstaltung ){
-			
-			switch($fileInfoArr[3]){
-				case 'Referenten':
-					$info['art'] = $fileInfoArr[3];
-					$info['tablenames'] = 'tx_qualinet2012_domain_model_referenten';				
-					
-					$userInfoArr = explode('_', $fileInfoArr[4]);
-					$info['ref'] = $userInfoArr[0];
-					$info['ref_name'] = $userInfoArr[1];
-					$info['file'] = $fileInfoArr[5];
-					$feuser = $this->feuserRepository->findOneByNavid($info['ref']);		
-								
-					if ($feuser){						
-						$referent = $this->referentenRepository->findByFeuserAndVeranstaltung( $feuser , $veranstaltung);
-						if ( $referent){
-							$info['uidForeign'] =$referent->getUid();
-						}
-						else{
-							$info['error'] = 'keine Referenz zu diesem file gefunden';
-							$info['uidForeign'] = 0;
-						}
-					}
-					else{
-						return array( 
-							'error'=>'kein Feuser zu diesem file gefunden',
-							'info'=>$fileInfoArr
-						);
-					}
-					
-					break;
-					
-				case 'Teilnehmer':
-					$info['art'] = $fileInfoArr[3];
-					$info['tablenames'] = 'tx_qualinet2012_domain_model_buchungen';
-					$userInfoArr = explode('_', $fileInfoArr[4]);
-					$info['tn'] = $userInfoArr[0];
-					$info['tn_name'] = $userInfoArr[1];	
-					$info['file'] = $fileInfoArr[5];
-					
-					$feuser = $this->feuserRepository->findOneByNavid($info['tn']);	
-					if ($feuser){			
-						$buchung = $this->buchungenRepository->findByTeilnehmerAndVeranstaltung( $feuser,$veranstaltung);
-						if ( $buchung ){
-							$info['uidForeign'] = $buchung->getUid();
-						}
-						else{
-							$info['error'] = 'keine Buchung zu diesem file gefunden';
-							$info['uidForeign'] = 0;
-							
-						}
-					}
-					else{
-						$info['error'] = 'keine Feuser zu diesem file gefunden';
-						$info['uidForeign'] = 0;						
-					}						
-										
-					
-					break;
-					
-				case 'Veranstaltungsorte': 	
-					$_GET['DEBUGSQL'] = 1;
-					$info['art'] = $fileInfoArr[3];
-					$info['tablenames'] = 'tx_qualinet2012_domain_model_ort';
-					$userInfoArr = explode('_', $fileInfoArr[4]);
-					$info['ort'] = $userInfoArr[0];
-					$info['ort_name'] = $userInfoArr[1];						
-					$info['file'] = $fileInfoArr[5];
-					$ort = $this->ortRepository->findOneByNavid( $info['ort']  );
-					if ( $ort ){
-						$info['uidForeign'] = $ort ->getUid();
-					}
-					else{
-						$info['error'] = 'keine Ort zu diesem file gefunden';
-						$info['uidForeign'] = 0;
-					}															
-					
-					break;
 				
-					
-				default:
-					$info['art'] = 'Veranstaltungen';
-					$info['tablenames'] = 'tx_qualinet2012_domain_model_veranstaltungen';
-					$info['interneid'] = $fileInfoArr[2];
-					$info['file'] = $fileInfoArr[3];				
-					$info['uidForeign'] = $veranstaltung->getUid();						
-			}
-			
-		}else{			
-			$info['error'] = 'keine Veranstaltung zu diesem file gefunden';
-			$info['uidForeign'] = 0;
-			$info['tablenames'] = 'tx_qualinet2012_domain_model_veranstaltungen';
-		}	
+		return $fileAssosiciated ;
+	}
+	
+	
+	/**
+	 * @var string $subFolder
+	 * @var Discipline $discipline
+	 * 
+	 * @return boolean
+	 */
+	private function addFileToMatch($file,$subFolder, Discipline $discipline){
+		/** @var array */
+		$matchProperties = $this->splitSubFolder($subFolder);
+		$matchProperties = $this->transformPropertyArray($matchProperties,$discipline,'Match');
+		if ($matchProperties['uid']>0){
+			$match = $this->matchRepository->findByUid($matchProperties['uid']);
+		}
+		echo $match->getUid();
+		print_r($matchProperties);die();
+	}
 
-		return $info;
+	/**
+	 * 
+	 * @param \TYPO3\CMS\Core\Resource\File $file
+	 * @var string $subFolder
+	 * @var \Volleyballserver\Vsoevvscout\Domain\Model\Discipline $discipline
+	 *
+	 * @return boolean
+	 */
+	private function addFileToPlayer(File $file,$subFolder, Discipline $discipline){
+		/** @var array */
+		$playerProperties = $this->splitSubFolder($subFolder);
+		if (is_numeric($playerProperties[0])){
+			$name = $playerProperties[0];
+			if (intval($playerProperties[0]) > 0 ){
+				$player = $this->playerRepository->findByUid($playerProperties[0]);							
+			}
+			else{
+				$player = $this->playerRepository->findOneByName($playerProperties[1]);
+			}
+		}
+		else{
+			$name = $playerProperties[0];
+			$player = $this->playerRepository->findOneByLastname($playerProperties[0]);
+		}
+		if ($player===NULL){
+			$player = new Player();
+			$player->setLastname($name);
+			$player->setDiscipline($discipline);
+			$persistenceManager = GeneralUtility::makeInstance("TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager");
+			$persistenceManager->persistAll();
+			
+		}
+		
+		return $this->insertFilereferenz( $file, $player->getUId(), 'tx_vsoevvscout_domain_model_player');
+	}
+	
+	/**
+	 * SPLIT SUBFOLDER 
+	 * 
+	 * @var string $subfolder
+	 * 
+	 * @return array 
+	 */
+	private function splitSubFolder($subFolder){
+		/** @var array */
+		$poperties = array();
+		
+		$subFolder = ltrim($subFolder, '&');  //trim & from datavolleyfiles
+		$poperties  = explode('_', $subFolder);
+		if (is_numeric($properties[0]===FALSE)){
+			$poperties = array_merge(array(0), $poperties); 
+		}
+
+		return $poperties;
 	}
 	
 	/**
@@ -277,12 +285,12 @@ class VsoevvscoutCommandController extends CommandController {
 	 * @param integer $uidForeign
 	 * @param string $tablenames
 	 */
-	private function insertFilereferenz( File $file, $uidForeign=0, $tablenames=tx_qualinet2012_domain_model_veranstaltungen){
+	private function insertFilereferenz( File $file, $uidForeign=0, $tablenames='tx_qualinet2012_domain_model_veranstaltungen'){
 		$insertArray =array(
 				'uid_local' =>  $file->getUid(),
 				'uid_foreign'=> $uidForeign,
 				'tablenames'=> $tablenames,
-				'fieldname'=> 'files',
+				'fieldname'=> 'file',
 				'sorting_foreign'=> 1,
 				'table_local'=> 'sys_file',
 				'title'=> $file->getProperty('title'),
@@ -319,6 +327,7 @@ class VsoevvscoutCommandController extends CommandController {
 	}
 	
 	/**
+	 * updateFileReferencesCommand
 	 * 
 	 */
 	public function updateFileReferencesCommand() {
@@ -329,17 +338,14 @@ class VsoevvscoutCommandController extends CommandController {
 		foreach ($fileArray  AS $FileUid){
 			$file = $this->fileRepository->findByUid($FileUid['uid']);
 			
-			$info = $this->getFileInfoFromIdentifier($file);
-			
-				
-			If ($info['error']){
+			If (!$this->addFileWithInfoFromIdentifier($file)){
 				$fehler['header'] = 'scaut.me: Fehler: ' . $info['error'];
 				$fehler['body'] = date("d.m.Y - H:i") . ' - ' . implode(",", $info)  ;
 				mail('info@berti-golf',$fehler['header'] ,$fehler['body']. 'lg Berti'  );
 				//print_r($info);
 			}	
 				
-				$this->insertFilereferenz(  $file, $info['uidForeign'],$info['tablenames'] );			
+			
 		}				
 		return true;
 	}
@@ -347,7 +353,7 @@ class VsoevvscoutCommandController extends CommandController {
 	/**
 	 * 
 	 * @param string $short
-	 * @return Diszipline
+	 * @return \Volleyballserver\Vsoevvscout\Domain\Model\Discipline
 	 */
 	private  function getDiszplineFromIdentifier($short){
 		$discipline = $this->disciplineRepository->findOneByShort($short);
@@ -362,4 +368,20 @@ class VsoevvscoutCommandController extends CommandController {
 		}	
 		return $discipline;		
 	}
+	
+	/**
+	 * 
+	 * @param array $propertyArray
+	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Discipline $discipline
+	 * @return multitype:unknown
+	 */
+	private function transformPropertyArray($propertyArray=array(), Discipline $discipline, $art = 'Match'){
+		/**var array() */
+		$transformedArray =array();
+		foreach( $this->fileNamePattern[$discipline->getShort()][$art] as $key => $index ){
+			$transformedArray[$key] = $propertyArray[$index];			
+		}		
+		return $transformedArray;
+	}
+	
 }
