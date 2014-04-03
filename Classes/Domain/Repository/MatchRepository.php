@@ -35,4 +35,41 @@ use \TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class MatchRepository extends Repository {
 
+	public function findOneByProperties($properties){
+		//var_dump($properties);
+		/**  @var void  */
+		$query = $this->createQuery();
+		if ($properties['homecountry']){
+			$constraints[] = $query->equals('homecountry.code', $properties['homecountry']);
+			//error typo3 core with join
+			//$constraints[] = $query->equals('guestteam.country.code', $properties['guestcountry']);
+			//echo '--------homecountry ------';
+		}
+		if ($properties['agegroup']){
+			$constraints[] = $query->equals('agegroup.short', $properties['agegroup']);
+			//echo '--------agegroup:  ------';
+		}
+		
+		if ($properties['hometeamname']){
+			$constraints[] = $query->equals('hometeam.name', $properties['hometeamname']);
+			//error typo3 core with join
+			//$constraints[] = $query->equals('guestteam.name', $properties['hometeamname']);
+			//echo '--------agegroup:  ------';
+		}
+			
+		$constraints[] = $query->equals('gender', $properties['gender']);
+		$constraints[] = $query->equals('location.short', $properties['location']);
+		$constraints[] = $query->equals('competition.short', $properties['competition']);
+		$constraints[] = $query->equals('matchdate', $properties['matchdate']);
+		$constraints[] = $query->equals('discipline', $properties['discipline']);
+	
+		$query->matching($query->logicalAnd($constraints));
+		$match = $query->execute()->getFirst();
+		//var_dump($match->getUid());echo '---------------------------------------';
+        //die();
+		return $match;
+
+
+	}
+
 }

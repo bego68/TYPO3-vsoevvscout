@@ -3,19 +3,19 @@ if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-$TCA['tx_vsoevvscout_domain_model_player'] = array(
-	'ctrl' => $TCA['tx_vsoevvscout_domain_model_player']['ctrl'],
+$TCA['tx_vsoevvscout_domain_model_team'] = array(
+	'ctrl' => $TCA['tx_vsoevvscout_domain_model_team']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, lastname, firstname, shirtname, birthdate, country, functionplayer, discipline,file',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, gender, name, country,  discipline, player,agegroup,file',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, lastname, firstname, shirtname, birthdate, country, functionplayer, discipline,file,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, gender, name, country,  discipline, player,agegroup,file,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
 	),
 	'columns' => array(
-
+	
 		'sys_language_uid' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
@@ -38,8 +38,8 @@ $TCA['tx_vsoevvscout_domain_model_player'] = array(
 				'items' => array(
 					array('', 0),
 				),
-				'foreign_table' => 'tx_vsoevvscout_domain_model_player',
-				'foreign_table_where' => 'AND tx_vsoevvscout_domain_model_player.pid=###CURRENT_PID### AND tx_vsoevvscout_domain_model_player.sys_language_uid IN (-1,0)',
+				'foreign_table' => 'tx_vsoevvscout_domain_model_team',
+				'foreign_table_where' => 'AND tx_vsoevvscout_domain_model_team.pid=###CURRENT_PID### AND tx_vsoevvscout_domain_model_team.sys_language_uid IN (-1,0)',
 			),
 		),
 		'l10n_diffsource' => array(
@@ -56,7 +56,7 @@ $TCA['tx_vsoevvscout_domain_model_player'] = array(
 				'max' => 255,
 			)
 		),
-
+	
 		'hidden' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
@@ -96,49 +96,53 @@ $TCA['tx_vsoevvscout_domain_model_player'] = array(
 				),
 			),
 		),
-		'lastname' => array(
+		'gender' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_player.lastname',
+			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_team.gender',
 			'config' => array(
-				'type' => 'input',
-				'size' => 30,
-				'eval' => 'trim,required'
+				'type' => 'select',
+				'items' => array(
+					array('Wähle Geschlecht', 0),
+					array('männlich', 1),
+					array('weiblich', 2),
+				),
+				'size' => 1,
+				'maxitems' => 1,
+				'eval' => ''
 			),
 		),
-		'firstname' => array(
+		'name' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_player.firstname',
+			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_team.name',
 			'config' => array(
 				'type' => 'input',
-				'size' => 30,
-				'eval' => 'trim'
+				'size' => 20,
+				'eval' => '',
 			),
 		),
-		'shirtname' => array(
+		
+		'discipline' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_player.shirtname',
+			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_team.discipline',
 			'config' => array(
-				'type' => 'input',
-				'size' => 30,
-				'eval' => 'trim'
-			),
-		),
-		'birthdate' => array(
-			'exclude' => 0,
-			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_player.birthdate',
-			'config' => array(
-				'type' => 'input',
-				'size' => 7,
-				'eval' => 'date',
-				'checkbox' => 1,
-				'default' => time()
+				'type' => 'select',
+				'foreign_table' => 'tx_vsoevvscout_domain_model_discipline',
+				'minitems' => 0,
+				'maxitems' => 1,
+				'appearance' => array(
+					'collapseAll' => 0,
+					'levelLinksPosition' => 'top',
+					'showSynchronizationLink' => 1,
+					'showPossibleLocalizationRecords' => 1,
+					'showAllLocalizationLink' => 1
+				),
 			),
 		),
 		'country' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_player.country',
+			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_team.country',
 			'config' => array(
-				'type' => 'inline',
+				'type' => 'select',
 				'foreign_table' => 'tx_vsoevvscout_domain_model_country',
 				'minitems' => 0,
 				'maxitems' => 1,
@@ -151,12 +155,12 @@ $TCA['tx_vsoevvscout_domain_model_player'] = array(
 				),
 			),
 		),
-		'functionplayer' => array(
+		'agegroup' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_player.functionplayer',
+			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_team.agegroup',
 			'config' => array(
-				'type' => 'inline',
-				'foreign_table' => 'tx_vsoevvscout_domain_model_functionplayer',
+				'type' => 'select',
+				'foreign_table' => 'tx_vsoevvscout_domain_model_agegroup',
 				'minitems' => 0,
 				'maxitems' => 1,
 				'appearance' => array(
@@ -168,13 +172,13 @@ $TCA['tx_vsoevvscout_domain_model_player'] = array(
 				),
 			),
 		),
-		'discipline' => array(
+		'player' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_player.discipline',
+			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_team.player',
 			'config' => array(
 				'type' => 'select',
-				'foreign_table' => 'tx_vsoevvscout_domain_model_discipline',
-				'MM' => 'tx_vsoevvscout_player_discipline_mm',
+				'foreign_table' => 'tx_vsoevvscout_domain_model_player',
+				'MM' => 'tx_vsoevvscout_team_player_mm',
 				'size' => 10,
 				'autoSizeMax' => 30,
 				'maxitems' => 9999,
@@ -195,7 +199,7 @@ $TCA['tx_vsoevvscout_domain_model_player'] = array(
 						'title' => 'Create new',
 						'icon' => 'add.gif',
 						'params' => array(
-							'table' => 'tx_vsoevvscout_domain_model_discipline',
+							'table' => 'tx_vsoevvscout_domain_model_player',
 							'pid' => '###CURRENT_PID###',
 							'setValue' => 'prepend'
 							),
@@ -205,11 +209,9 @@ $TCA['tx_vsoevvscout_domain_model_player'] = array(
 			),
 		),
 		'file' => array(
-				'exclude' => 0,
-				'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_player.file',
-				'config' => 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig( 'files' ),
+			'exclude' => 0,
+			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_team.file',
+			'config' => 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig( 'files' ),
 		),
 	),
 );
-
-?>

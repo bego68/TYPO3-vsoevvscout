@@ -21,6 +21,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 		<th><f:translate key="tx_vsoevvscout_domain_model_match.uid" /></th>
 		<th><f:translate key="tx_vsoevvscout_domain_model_match.gender" /></th>
 		<th><f:translate key="tx_vsoevvscout_domain_model_match.matchdate" /></th>
+		<th><f:translate key="tx_vsoevvscout_domain_model_match.matchteams" /></th>
 		<th><f:translate key="tx_vsoevvscout_domain_model_match.result" /></th>
 		<th> </th>
 		<th> </th>
@@ -32,7 +33,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 			<td><f:link.action action="show" arguments="{match : match}"> <f:translate key="tx_vsoevvscout_domain_model_match.gender{match.gender}" /></f:link.action></td>
 			<td><f:link.action action="show" arguments="{match : match}"> {match.matchdate -> f:format.date()}</f:link.action></td>
 			<td><f:link.action action="show" arguments="{match : match}"> {match.result}</f:link.action></td>
-			
+			<td><f:link.action action="show" arguments="{match : match}"> {match.hometeam.name} - {match.guestteam.name}</f:link.action></td>
 			<td><f:link.action action="edit" arguments="{match : match}">Edit</f:link.action></td>
 			<td><f:link.action action="delete" arguments="{match : match}">Delete</f:link.action></td>
 		</tr>
