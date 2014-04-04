@@ -21,13 +21,13 @@ $EM_CONF[$_EXTKEY] = array(
 	'priority' => '',
 	'module' => '',
 	'state' => 'beta',
-	'internal' => 'datei import',
+	'internal' => 'datei import, design',
 	'uploadfolder' => '0',
 	'createDirs' => '',
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
-	'version' => '0.3.0',
+	'version' => '0.3.1',
 	'constraints' => array(
 		'depends' => array(
 			'extbase' => '6.0',
@@ -39,6 +39,4 @@ $EM_CONF[$_EXTKEY] = array(
 		'suggests' => array(
 		),
 	),
-);
-
-?>
+)

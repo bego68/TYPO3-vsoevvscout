@@ -4,20 +4,21 @@
 		<header/>
 		<body>
 
-			<trans-unit id="tx_vsoevvscout_domain_model_match">
-				<source>Spiel</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.uid">
-				<source>Spielnummer</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.gender">
-				<source>Geschlecht</source> 
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.gender1">
-				<source>männlich</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.gender2">
-				<source>weiblich</source>
+			<trans-unit id="tx_vsoevvscout_domain_model_match"><source>Spiel</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.uid"><source>N°</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.gender"><source>Geschlecht</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.gendershort"><source>GE</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.mymetype.image"><source>picture yellow</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.mymetype.video"><source>film orange</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.mymetype.pdf"><source>file red</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.mymetype.text"><source>file</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.mymetype.msword"><source>file blue</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.mymetype.msexcel"><source>stats green</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.mymetype.zip"><source>compressed</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.mymetype.undefined"><source>asterisk</source></trans-unit>
+			
+			<trans-unit id="tx_vsoevvscout_domain_model_match.gender1"><source>M</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.gender2"><source>W</source>
 			</trans-unit>
 			<trans-unit id="tx_vsoevvscout_domain_model_match.matchdate">
 				<source>Spieldatum</source>

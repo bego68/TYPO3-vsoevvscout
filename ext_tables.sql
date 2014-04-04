@@ -681,6 +681,19 @@ CREATE TABLE tx_vsoevvscout_match_hometeam_team_mm (
 	KEY uid_foreign (uid_foreign)
 );
 
+#
+# Table structure for table 'tx_vsoevvscout_team_player_mm'
+#
+CREATE TABLE tx_vsoevvscout_team_player_mm (
+	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
+	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+	
+	KEY uid_local (uid_local),
+	KEY uid_foreign (uid_foreign)
+);
+
 
 #
 # Table structure for table 'tx_vsoevvscout_player_discipline_mm'

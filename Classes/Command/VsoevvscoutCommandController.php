@@ -79,7 +79,17 @@ class VsoevvscoutCommandController extends CommandController {
     						'homecountry' => 7,
     						'guestcountry' => 8,
     				),
-    			
+    			'Team' =>
+    			array(
+    					'uid' => 0,
+    					'kind' => 1,
+    					'country' => 2,
+    			),
+    			'Player' =>
+    					array(
+    							'uid' => 0,
+    							'name' => 1,
+    			)
     	),
     	'Beach' => array(
     			'Match' =>
@@ -235,8 +245,8 @@ class VsoevvscoutCommandController extends CommandController {
 
 		/** @var string 	 */
 		$fileIdentifierWithoutSuffix ='';
-		if (strpos($file->getIdentifier(), ',') >0){
-			$fileIdentifierWithoutSuffix = substr($file->getIdentifier(),0, strpos($file->getIdentifier(), ','));
+		if (strpos($file->getIdentifier(), '.') >0){  //if file strip file suffix
+			$fileIdentifierWithoutSuffix = substr($file->getIdentifier(),0, strpos($file->getIdentifier(), '.'));
 		}else{
 			$fileIdentifierWithoutSuffix = $file->getIdentifier();
 		}
@@ -338,33 +348,39 @@ class VsoevvscoutCommandController extends CommandController {
 	 * @return boolean
 	 */
 	private function addFileToTeam(File $file,$subFolder, Discipline $discipline){
+		
+		/** @ var \Volleyballserver\Vsoevvscout\Domain\Model\Team */
+		$team = NULL;
 		/** @var array */
 		$teamProperties = $this->splitSubFolder($subFolder);
 		if (is_numeric($teamProperties[0])){
-			$name = $teamProperties[1];
 			if (intval($teamProperties[0]) > 0 ){
 				$team = $this->teamRepository->findByUid($teamProperties[0]);
 			}
-			else{
-				$team = $this->teamRepository->findOneByName($teamProperties[1]);
-			}
-		}
-		else{
-			$name = $teamProperties[0];
-			
-			$team = $this->teamRepository->findOneByName($teamProperties[0]);
-		}
+
+
 		if ($team===NULL){
-			$team = new Team();
-			$team->setName($name);
-			$team->setPid($this->pid);
-			$team->setDiscipline($discipline);
-			$this->teamRepository->add($team);
-			$persistenceManager = GeneralUtility::makeInstance("TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager");
-			$persistenceManager->persistAll();
-				
+			$teamPropertiesTransformed = transformPropertyArray($teamProperties, $discipline,'Team');
+			$gender = $properties['gender'];
+			$match->setGender($gender);
+			if ($properties['agegroup']){
+				/** @var \Volleyballserver\Vsoevvscout\Domain\Model\Agegroup */
+				$agegroup = $this->getAgegroup($properties['agegroup']);
+				$match->setAgegroup($agegroup);
+			}else{
+				$agegroup=NULL;
+			}
+			
+			if ($properties['country']){
+				/** @var \Volleyballserver\Vsoevvscout\Domain\Model\Country */
+				$country = $this->getCountry($properties['country']);
+				$team = $this->getTeam($discipline,$gender,$agegroup,$homecountry);
+			}
+		
+			if ($properties['name']){
+				$team = $this->getTeam($discipline,$gender,$agegroup,NULL,$properties['hometeamname']);
+			}			
 		}
-	
 		return $this->insertFilereferenz( $file, $team->getUId(), 'tx_vsoevvscout_domain_model_team');
 	}
 	
@@ -523,6 +539,9 @@ class VsoevvscoutCommandController extends CommandController {
 		return $match;
 	}
 	
+
+	
+	
 	/**
 	 * 
 	 * @param string $location
@@ -655,7 +674,7 @@ class VsoevvscoutCommandController extends CommandController {
 	 */
 	private function transformPropertyArray($propertyArray=array(), Discipline $discipline, $art = 'Match'){;
 		/**var array() */
-		$transformedArray =array();
+		$transformedArray =array('gender' => 0, 'agegroup' => NULL, 'country' => NULL, 'name'='' );
 		foreach( $this->fileNamePattern[$discipline->getShort()][$art] as $key => $index ){
 			$transformedArray[$key] =  $propertyArray[$index];			
 		}

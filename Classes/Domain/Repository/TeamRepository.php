@@ -71,7 +71,9 @@ class TeamRepository extends Repository {
 		/**  @var void  */
 		$query = $this->createQuery();
 		$constraints[] = $query->equals('discipline', $discipline);
-		$constraints[] = $query->equals('gender', $gender);
+		If ($gender >0){
+			$constraints[] = $query->equals('gender', $gender);
+		}
 		$constraints[] = $query->equals('name', $name);
 		$query->matching($query->logicalAnd($constraints));
 	

@@ -1,23 +1,44 @@
-<h1>Nr.:  {match.uid} <f:translate key="tx_vsoevvscout_domain_model_match.gender{match.gender}" /></h1><br />
+{namespace vh=Volleyballserver\Vsoevvscout\ViewHelpers} 
 
- {match.matchdate -> f:format.date()}  {match.hometeam.name} - {match.guestteam.name} {match.result} <br />
+<h3 class="red">Nr.:  {match.uid} <f:translate key="tx_vsoevvscout_domain_model_match.gender{match.gender}" /></h3>
+ {match.matchdate -> f:format.date()}  {match.hometeam.name} ({match.hometeam.country.code}) - {match.guestteam.name}({match.guestteam.country.code}) {match.result} <br />
 <br /> 
-<h2>Files assigned to the match</h2>
-<f:for each="{match.file}" as="file" >
-		{file.originalResource.name}, 
-		
-</f:for> 
-<br />
-
-<h2>Files assigned to {match.hometeam.name}</h2>
-<f:for each="{match.hometeam.file}" as="file" >
-		{file.originalResource.name}, 
-		
-</f:for> 
-<br />
-<h2>Files assigned to {match.guestteam.name}</h2>
-<f:for each="{match.guestteam.file}" as="file" >
-		{file.originalResource.name}, 
-		
-</f:for> 
+<div class="row">
+	<div class="col-lg-4 col-md-6 col-sm-12 br-grew">
+	
+		<h3>Files assigned to the match</h3>
+		<f:for each="{match.file}" as="file" >
+			<f:render partial="Match/File" arguments="{file:file}" />
+		</f:for> 
+	</div>
+	<div class="col-lg-4 col-md-6 col-sm-12 br-grew">
+		<h3>Files assigned to {match.hometeam.name}</h3>
+		<f:for each="{match.hometeam.file}" as="file" >
+			<f:render partial="Match/File" arguments="{file:file}" />
+		</f:for> 
+	</div>
+	<f:for each="{match.hometeam.player}" as="player">
+		<div class="col-lg-4 col-md-6 col-sm-12 br-grew">
+			<h3>Files assigned to {player.lastname}</h3>
+			<f:for each="{player.file}" as="file" >
+				<f:render partial="Match/File" arguments="{file:file}" />
+			</f:for> 
+		</div>
+	</f:for>	
+	<div class="col-lg-4 col-md-6 col-sm-12 br-grew">
+		<h3>Files assigned to {match.guestteam.name}</h3>
+		<f:for each="{match.guestteam.file}" as="file" >
+			<f:render partial="Match/File" arguments="{file:file}" />
+		</f:for>
+	</div>
+	
+	<f:for each="{match.guestteam.player}" as="player">
+		<div class="col-lg-4 col-md-6 col-sm-12 br-grew">
+			<h3>Files assigned to {player.lastname}</h3>
+			<f:for each="{player.file}" as="file" >
+				<f:render partial="Match/File" arguments="{file:file}" />
+			</f:for> 
+		</div>
+	</f:for>	
+</div>	 
 <br />

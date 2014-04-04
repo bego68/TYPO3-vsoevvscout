@@ -25,13 +25,15 @@ namespace Volleyballserver\Vsoevvscout\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 /**
  *
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Player extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class Player extends AbstractEntity {
 
 	/**
 	 * Nachname
@@ -82,6 +84,14 @@ class Player extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Discipline>
 	 */
 	protected $discipline;
+	
+	/**
+	 * file
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+	 * @lazy
+	 */
+	protected $file;
 
 	/**
 	 * __construct
@@ -105,7 +115,8 @@ class Player extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		 * It will be rewritten on each save in the extension builder
 		 * You may modify the constructor of this class instead
 		 */
-		$this->discipline = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->discipline = new ObjectStorage();
+		$this->file = new ObjectStorage();
 	}
 
 	/**
@@ -272,10 +283,48 @@ class Player extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Discipline> $discipline
 	 * @return void
 	 */
-	public function setDiscipline(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $discipline) {
+	public function setDiscipline(ObjectStorage $discipline) {
 		
 		$this->discipline = $discipline;
 	}
-
+	/**
+	 * add a file
+	 *
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $file
+	 * @return void
+	 */
+	public function addFile(FileReference $fileToRemove) {
+	
+		$this->file->attach($fileToRemove);
+	}
+	
+	/**
+	 * Removes a file
+	 *
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $file
+	 * @return void
+	 */
+	public function removeFile(FileReference $fileToRemove) {
+	
+		$this->file->detach($fileToRemove);
+	}
+	/**
+	 * sets  File
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $file
+	 *
+	 * @return void
+	 */
+	public function setFile(ObjectStorage $file) {
+		$this->file = $file;
+	}
+	
+	/**
+	 * get the Files
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+	 */
+	public function getFile() {
+		return $this->file;
+	}
 }
-?>

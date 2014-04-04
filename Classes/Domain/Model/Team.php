@@ -86,6 +86,14 @@ class Team extends AbstractEntity {
 	 */
 	protected $file;
 	
+	/**
+	 * player
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Player>
+	 * @lazy
+	 */
+	protected $player;
+	
 
 	/**
 	 * __construct
@@ -110,6 +118,7 @@ class Team extends AbstractEntity {
 		 * You may modify the constructor of this class instead
 		 */
 		$this->file = new ObjectStorage();
+		$this->player = new ObjectStorage();
 		
 	}
 
@@ -262,5 +271,46 @@ class Team extends AbstractEntity {
 	public function getFile() {
 		return $this->file;
 	}	
+	
+	
+	/**
+	 * add a player
+	 *
+	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Player $player
+	 * @return void
+	 */
+	public function addPlayer(Player $playerToRemove) {
+	
+		$this->player->attach($playerToRemove);
+	}
+	
+	/**
+	 * Removes a player
+	 *
+	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Player $player
+	 * @return void
+	 */
+	public function removePlayer(Player $playerToRemove) {
+	
+		$this->player->detach($playerToRemove);
+	}
+	/**
+	 * sets  Player
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Player> $player
+	 *
+	 * @return void
+	 */
+	public function setPlayer(ObjectStorage $player) {
+		$this->player = $player;
+	}
+	
+	/**
+	 * get the Players
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Player>
+	 */
+	public function getPlayer() {
+		return $this->player;
+	}
 }
-?>
