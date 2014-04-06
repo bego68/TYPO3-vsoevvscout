@@ -40,4 +40,6 @@ plugin.tx_vsoevvscout._CSS_DEFAULT_STYLE (
 		vertical-align:top;
 	}
 )
-page.includeCSS.tx_vsoevvscout = {$plugin.tx_vsoevvscout.view.cssFile}
+page.includeCSS.tx_vsoevvscoutCss = {$plugin.tx_vsoevvscout.view.cssFile}
+page.includeCSS.tx_vsoevvscoutFlag16 = {$plugin.tx_vsoevvscout.view.cssFlag16File}
+page.includeCSS.tx_vsoevvscoutFlag32 = {$plugin.tx_vsoevvscout.view.cssFlag32File}

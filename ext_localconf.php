@@ -13,15 +13,16 @@ ExtensionUtility::configurePlugin(
 		'Discipline' => 'list, show, new, create',
 		'Competition' => 'list, show, new, create',
 		'Country' => 'list, show, new, create, edit, update',
-		
+		'Player' => 'list, show, new, create, edit, update',
+		'Team' => 'list, show, new, create, edit, update',
 	),
 	// non-cacheable actions
 	array(
-		'Match' => 'create, update, delete',
+		'Match' => 'list,show,create, update, delete',
 		'Discipline' => 'create',
 		'Competition' => 'create',
 		'Country' => 'create, update',
-		
+		'Player' => 'list, show, create, edit, update',
 	)
 );
 

@@ -160,7 +160,7 @@ CREATE TABLE tx_vsoevvscout_domain_model_country (
 
 	name varchar(255) DEFAULT '' NOT NULL,
 	code varchar(255) DEFAULT '' NOT NULL,
-
+	code varchar(50) DEFAULT '' NOT NULL,
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
 	cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
@@ -579,7 +579,8 @@ CREATE TABLE `tx_vsoevvscout_domain_model_team` (
   `country` int(11) unsigned DEFAULT '0',
   `gender` int(11) unsigned DEFAULT '0',
   `player` int(11) unsigned DEFAULT '0',
-  `match` int(11) unsigned DEFAULT '0',
+  `homematch` int(11) unsigned DEFAULT '0',
+  `guestmatch` int(11) unsigned DEFAULT '0',
   `agegroup` int(11) DEFAULT NULL,
   `discipline` int(11) DEFAULT NULL,
   `file` int(11) NOT NULL DEFAULT '0',

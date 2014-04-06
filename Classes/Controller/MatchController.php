@@ -27,10 +27,11 @@ namespace Volleyballserver\Vsoevvscout\Controller;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Volleyballserver\Vsoevvscout\Domain\Repository\MatchRepository;
 use Volleyballserver\Vsoevvscout\Domain\Model\Match;
+use Volleyballserver\Vsoevvscout\Service\UserRights;
 
 /**
  *
- *
+ * @package Vsoevvscout
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -43,6 +44,23 @@ class MatchController extends ActionController {
 	 * @inject
 	 */
 	protected $matchRepository;
+	
+	/**
+	 * allowedDisciplines
+	 * Disciplines user  can see, edit, ...
+	 *
+	 * @var array
+	 */
+	protected $allowedDisciplines;
+
+	
+	/**
+	* Initializes the current action
+	 * @return void
+	 */
+	protected function initializeAction() {
+		$this->allowedDisciplines = UserRights::getAllowedDisciplines();
+	}
 
 	/**
 	 * action list
@@ -50,15 +68,14 @@ class MatchController extends ActionController {
 	 * @return void
 	 */
 	public function listAction() {
-		
-		$matches = $this->matchRepository->findAll();
+		$matches = $this->matchRepository->findAllByFilter();
 		$this->view->assign('matches', $matches);
 	}
 
 	/**
 	 * action show
 	 *
-	 * @param Match $match
+	 * @param Volleyballserver\Vsoevvscout\Domain\Model\Match $match
 	 * @return void
 	 */
 	public function showAction(Match $match) {
@@ -69,7 +86,7 @@ class MatchController extends ActionController {
 	/**
 	 * action new
 	 *
-	 * @param Match $newMatch
+	 * @param Volleyballserver\Vsoevvscout\Domain\Model\Match $newMatch
 	 * @dontvalidate $newMatch
 	 * @return void
 	 */
@@ -81,7 +98,7 @@ class MatchController extends ActionController {
 	/**
 	 * action create
 	 *
-	 * @param Match $newMatch
+	 * @param Volleyballserver\Vsoevvscout\Domain\Model\Match $newMatch
 	 * @return void
 	 */
 	public function createAction(Match $newMatch) {
@@ -94,7 +111,7 @@ class MatchController extends ActionController {
 	/**
 	 * action edit
 	 *
-	 * @param Match $match
+	 * @param Volleyballserver\Vsoevvscout\Domain\Model\Match $match
 	 * @return void
 	 */
 	public function editAction(Match $match) {
@@ -105,7 +122,7 @@ class MatchController extends ActionController {
 	/**
 	 * action update
 	 *
-	 * @param Match $match
+	 * @param Volleyballserver\Vsoevvscout\Domain\Model\Match $match
 	 * @return void
 	 */
 	public function updateAction(Match $match) {
@@ -118,7 +135,7 @@ class MatchController extends ActionController {
 	/**
 	 * action delete
 	 *
-	 * @param Match $match
+	 * @param Volleyballserver\Vsoevvscout\Domain\Model\Match $match
 	 * @return void
 	 */
 	public function deleteAction(Match $match) {
@@ -129,4 +146,3 @@ class MatchController extends ActionController {
 	}
 
 }
-?>

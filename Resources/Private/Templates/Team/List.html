@@ -1,0 +1,62 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<f:flashMessages />
+
+<f:link.action controller="Match" action="list" >
+	<button type="button" class="btn btn-default btn-lg">
+		<span class="glyphicon glyphicon-cog"></span> Matches
+	</button>
+</f:link.action>
+<f:link.action controller="Player" action="list" >
+	<button type="button" class="btn btn-default btn-lg">
+		<span class="glyphicon glyphicon-user"></span> Players
+	</button>
+</f:link.action>
+
+	<button type="button" class="btn btn-default btn-lg">
+		<span class="glyphicon glyphicon-user "></span><span class="glyphicon glyphicon-user "></span> <span class="">Teams</span>
+	</button>
+
+
+<br /><br />
+<table  class="tx_vsoevvscout f16" >
+	<tr>
+		<th><f:translate key="tx_vsoevvscout_domain_model_team.name" /></th>
+		<th><f:translate key="tx_vsoevvscout_domain_model_team.countmatch" /></th>
+		<th> </th>
+		<th> </th>
+	</tr>
+
+	<f:for each="{teams}" as="team">
+		<tr>
+			<td><f:link.action action="show" arguments="{team : team}"><f:render partial="Country/Flag" arguments="{country:team.country}" /> {team.name} ({team.country.code})</f:link.action></td>
+			<td><f:link.action action="show" arguments="{team : team}">{team.countmatch}</f:link.action></td>
+			<td>
+				<f:link.action action="edit" arguments="{team : team}" title="edit team">
+					<button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-pencil yellow"></span></button>			
+				</f:link.action>
+			</td>
+			<td>
+				<f:link.action action="delete" arguments="{team : team}" title="delete team">
+					<button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-remove red"></span></button>
+				</f:link.action>
+			</td>
+		</tr>
+	</f:for>
+</table>
+
+</f:section>

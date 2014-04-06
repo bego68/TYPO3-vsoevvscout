@@ -26,6 +26,7 @@ namespace Volleyballserver\Vsoevvscout\Domain\Repository;
  ***************************************************************/
 
 use \TYPO3\CMS\Extbase\Persistence\Repository;
+use Volleyballserver\Vsoevvscout\Service\UserRights;
 
 /**
  * Player Repository
@@ -34,5 +35,15 @@ use \TYPO3\CMS\Extbase\Persistence\Repository;
  * @author Berti Golf <info@berti-golf.de>
  */
 class PlayerRepository extends Repository {
-
+	
+	/**
+	 * 
+	 */
+	public function findAllByFilter(){
+		$query = $this->createQuery();
+		$constraints[] = $query->in('discipline', UserRights::getAllowedDisciplines());
+		$constraints[] =  $query->logicalNot($query->equals('file.uid', NULL));
+		$query->matching($query->logicalAnd($constraints));		
+		return $query->execute();
+	}
 }

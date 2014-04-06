@@ -1,5 +1,6 @@
 <?php
 namespace Volleyballserver\Vsoevvscout\Controller;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -23,24 +24,23 @@ namespace Volleyballserver\Vsoevvscout\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
-use  TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use  Volleyballserver\Vsoevvscout\Domain\Model\Player;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use \Volleyballserver\Vsoevvscout\Domain\Model\Team;
 /**
  *
- * @package Vsoevvscout
+ *
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- * @author Berti Golf <info@berti-golf.de>
+ *
  */
-class PlayerController extends ActionController {
+class TeamController extends ActionController {
 
 	/**
-	 * playerRepository
+	 * teamRepository
 	 *
-	 * @var \Volleyballserver\Vsoevvscout\Domain\Repository\PlayerRepository
+	 * @var \Volleyballserver\Vsoevvscout\Domain\Repository\TeamRepository
 	 * @inject
 	 */
-	protected $playerRepository;
+	protected $teamRepository;
 	
 	
 	/**
@@ -49,68 +49,70 @@ class PlayerController extends ActionController {
 	 * @return void
 	 */
 	public function listAction() {
-		$players = $this->playerRepository->findAllByFilter();
-		$this->view->assign('players', $players);
+	
+		$teams = $this->teamRepository->findAllByFilter();
+		$this->view->assign('teams', $teams);
 	}
 
 	/**
 	 * action show
 	 *
-	 * @param Player $player
+	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Team $team
 	 * @return void
 	 */
-	public function showAction(Player $player) {
+	public function showAction(Team $team) {
 		
-		$this->view->assign('player', $player);
+		$this->view->assign('team', $team);
 	}
 
 	/**
 	 * action new
 	 *
-	 * @param Player $newPlayer
-	 * @dontvalidate $newPlayer
+	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Team $newTeam
+	 * @dontvalidate $newTeam
 	 * @return void
 	 */
-	public function newAction(Player $newPlayer = NULL) {
+	public function newAction(Team $newTeam = NULL) {
 		
-		$this->view->assign('newPlayer', $newPlayer);
+		$this->view->assign('newTeam', $newTeam);
 	}
 
 	/**
 	 * action create
 	 *
-	 * @param Player $newPlayer
+	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Team $newTeam
 	 * @return void
 	 */
-	public function createAction(Player $newPlayer) {
+	public function createAction(Team $newTeam) {
 		
-		$this->playerRepository->add($newPlayer);
-		$this->flashMessageContainer->add('Your new Player was created.');
+		$this->functionRepository->add($newTeam);
+		$this->flashMessageContainer->add('Your new Team was created.');
 		$this->redirect('list');
 	}
 
 	/**
 	 * action edit
 	 *
-	 * @param Player $player
+	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Team $team
 	 * @return void
 	 */
-	public function editAction(Player $player) {
+	public function editAction(Team $team) {
 		
-		$this->view->assign('player', $player);
+		$this->view->assign('team', $team);
 	}
 
 	/**
 	 * action update
 	 *
-	 * @param Player $player
+	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Team $team
 	 * @return void
 	 */
-	public function updateAction(Player $player) {
+	public function updateAction(Team $team) {
 		
-		$this->playerRepository->update($player);
-		$this->flashMessageContainer->add('Your Player was updated.');
+		$this->teamRepository->update($team);
+		$this->flashMessageContainer->add('Your Team was updated.');
 		$this->redirect('list');
 	}
 
 }
+?>

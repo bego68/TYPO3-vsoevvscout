@@ -79,17 +79,7 @@ class VsoevvscoutCommandController extends CommandController {
     						'homecountry' => 7,
     						'guestcountry' => 8,
     				),
-    			'Team' =>
-    			array(
-    					'uid' => 0,
-    					'kind' => 1,
-    					'country' => 2,
-    			),
-    			'Player' =>
-    					array(
-    							'uid' => 0,
-    							'name' => 1,
-    			)
+    			
     	),
     	'Beach' => array(
     			'Match' =>
@@ -245,36 +235,37 @@ class VsoevvscoutCommandController extends CommandController {
 
 		/** @var string 	 */
 		$fileIdentifierWithoutSuffix ='';
-		if (strpos($file->getIdentifier(), '.') >0){  //if file strip file suffix
-			$fileIdentifierWithoutSuffix = substr($file->getIdentifier(),0, strpos($file->getIdentifier(), '.'));
+		if (substr_count($file->getIdentifier(), '.') >2){
+			$fileIdentifierWithoutSuffix = substr($file->getIdentifier(),0, strrpos($file->getIdentifier(), '.'));
 		}else{
 			$fileIdentifierWithoutSuffix = $file->getIdentifier();
 		}
+		echo $fileIdentifierWithoutSuffix  . ' ---- ' . $file->getIdentifier() . "\n\n";
 		/** @var array 	 */
 		$fileIdentifierArray = explode('/', $fileIdentifierWithoutSuffix);
 
 		/** @var Discipline 	 */
 		$discipline = $this->getDiszplineFromIdentifier($fileIdentifierArray[3]); //Beach, Halle,...
-		
-		/** @var string 	 */
-		$subFolder1 = $fileIdentifierArray[4]; //Matches, Players, Teams
-		$subFolder2 = $fileIdentifierArray[5]; // f.e. D_2013_08_03_EM_Klagenfurt_LilianaBaquerizo-HoltwickSemmler 
-		switch($subFolder1){
-			case 'Matches':	
-				$fileAssosiciated = $this->addFileToMatch($file,$subFolder2,$discipline);
+		if ($discipline != NULL){
+			/** @var string 	 */
+			$subFolder1 = $fileIdentifierArray[4]; //Matches, Players, Teams
+			$subFolder2 = $fileIdentifierArray[5]; // f.e. D_2013_08_03_EM_Klagenfurt_LilianaBaquerizo-HoltwickSemmler 
+			switch($subFolder1){
+				case 'Matches':	
+					$fileAssosiciated = $this->addFileToMatch($file,$subFolder2,$discipline);
+					break;
+				case 'Teams':
+					$fileAssosiciated = $this->addFileToTeam($file,$subFolder2,$discipline);
+					break;
+				case 'Players':
+					$fileAssosiciated = $this->addFileToPlayer($file,$subFolder2,$discipline);
 				break;
-			case 'Teams':
-				$fileAssosiciated = $this->addFileToTeam($file,$subFolder2,$discipline);
-				break;
-			case 'Players':
-				$fileAssosiciated = $this->addFileToPlayer($file,$subFolder2,$discipline);
-			break;
-			default:
-				$fileAssosiciated = false;
-				$this->errorMessage[] = 'error 1396289866: The file must be in one of the subfolders Matches, Teams or Players ' . $file->getIdentifier();
-			
-		}		
-
+				default:
+					$fileAssosiciated = false;
+					$this->errorMessage[] = 'error 1396289866: The file must be in one of the subfolders Matches, Teams or Players ' . $file->getIdentifier();
+				
+			}		
+		}
 		return $fileAssosiciated ;
 	}
 
@@ -348,39 +339,33 @@ class VsoevvscoutCommandController extends CommandController {
 	 * @return boolean
 	 */
 	private function addFileToTeam(File $file,$subFolder, Discipline $discipline){
-		
-		/** @ var \Volleyballserver\Vsoevvscout\Domain\Model\Team */
-		$team = NULL;
 		/** @var array */
 		$teamProperties = $this->splitSubFolder($subFolder);
 		if (is_numeric($teamProperties[0])){
+			$name = $teamProperties[1];
 			if (intval($teamProperties[0]) > 0 ){
 				$team = $this->teamRepository->findByUid($teamProperties[0]);
 			}
-
-
-		if ($team===NULL){
-			$teamPropertiesTransformed = transformPropertyArray($teamProperties, $discipline,'Team');
-			$gender = $properties['gender'];
-			$match->setGender($gender);
-			if ($properties['agegroup']){
-				/** @var \Volleyballserver\Vsoevvscout\Domain\Model\Agegroup */
-				$agegroup = $this->getAgegroup($properties['agegroup']);
-				$match->setAgegroup($agegroup);
-			}else{
-				$agegroup=NULL;
+			else{
+				$team = $this->teamRepository->findOneByName($teamProperties[1]);
 			}
-			
-			if ($properties['country']){
-				/** @var \Volleyballserver\Vsoevvscout\Domain\Model\Country */
-				$country = $this->getCountry($properties['country']);
-				$team = $this->getTeam($discipline,$gender,$agegroup,$homecountry);
-			}
-		
-			if ($properties['name']){
-				$team = $this->getTeam($discipline,$gender,$agegroup,NULL,$properties['hometeamname']);
-			}			
 		}
+		else{
+			$name = $teamProperties[0];
+			
+			$team = $this->teamRepository->findOneByName($teamProperties[0]);
+		}
+		if ($team===NULL){
+			$team = new Team();
+			$team->setName($name);
+			$team->setPid($this->pid);
+			$team->setDiscipline($discipline);
+			$this->teamRepository->add($team);
+			$persistenceManager = GeneralUtility::makeInstance("TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager");
+			$persistenceManager->persistAll();
+				
+		}
+	
 		return $this->insertFilereferenz( $file, $team->getUId(), 'tx_vsoevvscout_domain_model_team');
 	}
 	
@@ -414,6 +399,7 @@ class VsoevvscoutCommandController extends CommandController {
 				'uid_local' =>  $file->getUid(),
 				'uid_foreign'=> $uidForeign,
 				'tablenames'=> $tablenames,
+				'pid'=> $this->pid,
 				'fieldname'=> 'files',
 				'sorting_foreign'=> 1,
 				'table_local'=> 'sys_file',
@@ -459,7 +445,7 @@ class VsoevvscoutCommandController extends CommandController {
 	 */
 	private  function getDiszplineFromIdentifier($short){
 		$discipline = $this->disciplineRepository->findOneByShort($short);
-		if (!isset($discipline)){
+		if (!isset($discipline) and $short!=''){
 			$discipline = new Discipline;
 			$discipline->setShort($short);
 			$discipline->setName($short);
@@ -538,9 +524,6 @@ class VsoevvscoutCommandController extends CommandController {
 		
 		return $match;
 	}
-	
-
-	
 	
 	/**
 	 * 
@@ -674,7 +657,7 @@ class VsoevvscoutCommandController extends CommandController {
 	 */
 	private function transformPropertyArray($propertyArray=array(), Discipline $discipline, $art = 'Match'){;
 		/**var array() */
-		$transformedArray =array('gender' => 0, 'agegroup' => NULL, 'country' => NULL, 'name'='' );
+		$transformedArray =array();
 		foreach( $this->fileNamePattern[$discipline->getShort()][$art] as $key => $index ){
 			$transformedArray[$key] =  $propertyArray[$index];			
 		}

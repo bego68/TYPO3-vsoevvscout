@@ -49,6 +49,13 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $code = '';
 
 	/**
+	 * Iso
+	 *
+	 * @var string
+	 */
+	protected $iso = '';
+	
+	/**
 	 * Returns the name
 	 *
 	 * @return string $name
@@ -90,5 +97,34 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		$this->code = $code;
 	}
 
+	/**
+	 * Returns the iso
+	 *
+	 * @return string $iso
+	 */
+	public function getIso() {
+	
+		return $this->iso;
+	}
+	
+	/**
+	 * Returns the iso lowercase
+	 *
+	 * @return string $iso
+	 */
+	public function getIsolower() {
+	
+		return strtolower($this->iso);
+	}
+	
+	/**
+	 * Sets the iso
+	 *
+	 * @param string $iso
+	 * @return void
+	 */
+	public function setIso($iso) {
+	
+		$this->iso = $iso;
+	}
 }
-?>

@@ -25,7 +25,13 @@ namespace Volleyballserver\Vsoevvscout\Domain\Repository;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use \TYPO3\CMS\Extbase\Persistence\Repository;
+use TYPO3\CMS\Extbase\Persistence\Repository;
+use Volleyballserver\Vsoevvscout\Service\UserRights;
+use Volleyballserver\Vsoevvscout\Domain\Model\Player;
+use Volleyballserver\Vsoevvscout\Domain\Model\Team;
+use Volleyballserver\Vsoevvscout\Domain\Model\Agegroup;
+use Volleyballserver\Vsoevvscout\Domain\Model\Competition;
+
 
 /**
  * Match Repository
@@ -34,29 +40,36 @@ use \TYPO3\CMS\Extbase\Persistence\Repository;
  * @author Berti Golf <info@berti-golf.de>
  */
 class MatchRepository extends Repository {
+	
+	public function findAllByFilter(){
+		$query = $this->createQuery();
+		$constraints[] = $query->in('discipline', UserRights::getAllowedDisciplines());
 
+		$query->matching($query->logicalAnd($constraints));
+
+		return $query->execute();
+	}
+
+	/**
+	 * 
+	 * @param array $properties
+	 * @return void
+	 */
 	public function findOneByProperties($properties){
 		//var_dump($properties);
 		/**  @var void  */
 		$query = $this->createQuery();
 		if ($properties['homecountry']){
 			$constraints[] = $query->equals('homecountry.code', $properties['homecountry']);
-			//error typo3 core with join
-			//$constraints[] = $query->equals('guestteam.country.code', $properties['guestcountry']);
-			//echo '--------homecountry ------';
 		}
 		if ($properties['agegroup']){
 			$constraints[] = $query->equals('agegroup.short', $properties['agegroup']);
-			//echo '--------agegroup:  ------';
 		}
 		
 		if ($properties['hometeamname']){
 			$constraints[] = $query->equals('hometeam.name', $properties['hometeamname']);
-			//error typo3 core with join
-			//$constraints[] = $query->equals('guestteam.name', $properties['hometeamname']);
-			//echo '--------agegroup:  ------';
 		}
-			
+
 		$constraints[] = $query->equals('gender', $properties['gender']);
 		$constraints[] = $query->equals('location.short', $properties['location']);
 		$constraints[] = $query->equals('competition.short', $properties['competition']);

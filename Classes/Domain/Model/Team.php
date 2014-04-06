@@ -24,10 +24,11 @@ namespace Volleyballserver\Vsoevvscout\Domain\Model;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
-use \TYPO3\CMS\Extbase\Domain\Model\FileReference;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use Volleyballserver\Vsoevvscout\Domain\Model\Player;
+use Volleyballserver\Vsoevvscout\Domain\Model\Match;
 
 /**
  *
@@ -94,6 +95,22 @@ class Team extends AbstractEntity {
 	 */
 	protected $player;
 	
+	/**
+	 * homematch
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Match>
+	 * @lazy
+	 */
+	protected $homematch;
+	
+	/**
+	 * guestmatch
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Match>
+	 * @lazy
+	 */
+	protected $guestmatch;
+	
 
 	/**
 	 * __construct
@@ -119,6 +136,8 @@ class Team extends AbstractEntity {
 		 */
 		$this->file = new ObjectStorage();
 		$this->player = new ObjectStorage();
+		$this->homematche = new ObjectStorage();
+		$this->guestmatch = new ObjectStorage();
 		
 	}
 
@@ -313,4 +332,118 @@ class Team extends AbstractEntity {
 	public function getPlayer() {
 		return $this->player;
 	}
+	
+	
+	
+	/**
+	 * add a homematch
+	 *
+	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Match $homematch
+	 * @return void
+	 */
+	public function addHomematch(Match $homematchToRemove) {
+	
+		$this->homematch->homematch($homematchToRemove);
+	}
+	
+	/**
+	 * Removes a homematch
+	 *
+	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Match $homematch
+	 * @return void
+	 */
+	public function removeHomematch(Match $homematchToRemove) {
+	
+		$this->homematch->detach($homematchToRemove);
+	}
+	/**
+	 * sets  Homematch
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Match> $homematch
+	 *
+	 * @return void
+	 */
+	public function setHomematch(ObjectStorage $homematch) {
+		$this->homematch = $homematch;
+	}
+	
+	/**
+	 * get the Homematchs
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Match>
+	 */
+	public function getHomematch() {
+		return $this->homematch;
+	}
+	
+	/**
+	 * add a guestmatch
+	 *
+	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Match $guestmatch
+	 * @return void
+	 */
+	public function addGuestmatch(Match $guestmatchToRemove) {
+	
+		$this->guestmatch->guestmatch($guestmatchToRemove);
+	}
+	
+	/**
+	 * Removes a guestmatch
+	 *
+	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Match $guestmatch
+	 * @return void
+	 */
+	public function removeGuestmatch(Match $guestmatchToRemove) {
+	
+		$this->guestmatch->detach($guestmatchToRemove);
+	}
+	/**
+	 * sets  Guestmatch
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Match> $guestmatch
+	 *
+	 * @return void
+	 */
+	public function setGuestmatch(ObjectStorage $guestmatch) {
+		$this->guestmatch = $guestmatch;
+	}
+	
+	/**
+	 * get the Guestmatchs
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Match>
+	 */
+	public function getGuestmatch() {
+		return $this->guestmatch;
+	}
+	
+	/**
+	 * count the number of the Guestmatches
+	 *
+	 * @return int
+	 * 
+	 */
+	public function getCountguestmatch() {
+		return $this->guestmatch->count();
+	}
+	/**
+	 * count the number of the Homematches
+	 *
+	 * @return int
+	 *
+	 */
+	public function getCounthomematch() {
+		return $this->homematch->count();
+	}
+	
+	/**
+	 * count the number of the matches
+	 *
+	 * @return int
+	 *
+	 */
+	public function getCountMatch() {
+		return ($this->guestmatch->count() + $this->homematch->count() );
+	}
+	
 }

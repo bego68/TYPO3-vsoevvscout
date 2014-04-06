@@ -26,9 +26,13 @@ namespace Volleyballserver\Vsoevvscout\Domain\Repository;
  ***************************************************************/
 
 use TYPO3\CMS\Extbase\Persistence\Repository;
+use Volleyballserver\Vsoevvscout\Service\UserRights;
 use Volleyballserver\Vsoevvscout\Domain\Model\Discipline;
 use Volleyballserver\Vsoevvscout\Domain\Model\Agegroup;
 use Volleyballserver\Vsoevvscout\Domain\Model\Country;
+use Volleyballserver\Vsoevvscout\Domain\Model\Player;
+use Volleyballserver\Vsoevvscout\Domain\Model\Team;
+use Volleyballserver\Vsoevvscout\Domain\Model\Competition;
 
 /**
  * Team Repository
@@ -37,7 +41,16 @@ use Volleyballserver\Vsoevvscout\Domain\Model\Country;
  * @author Berti Golf <info@berti-golf.de>
  */
 class TeamRepository extends Repository {
-
+	
+	public function findAllByFilter(){
+		$query = $this->createQuery();
+		$constraints[] = $query->in('discipline', UserRights::getAllowedDisciplines());
+	
+		$query->matching($query->logicalAnd($constraints));
+	
+		return $query->execute();
+	}
+	
 	
 	/**
 	 *

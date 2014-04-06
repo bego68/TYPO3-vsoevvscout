@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_vsoevvscout_domain_model_country'] = array(
 	'ctrl' => $TCA['tx_vsoevvscout_domain_model_country']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, code',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, code,iso',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, name, code,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, name, code, iso, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -111,7 +111,16 @@ $TCA['tx_vsoevvscout_domain_model_country'] = array(
 			'config' => array(
 				'type' => 'input',
 				'size' => 3,
-				'eval' => 'trim, ,required,upper'
+				'eval' => 'trim,required,upper'
+			),
+		),
+		'iso' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_country.iso',
+			'config' => array(
+				'type' => 'input',
+				'size' => 3,
+				'eval' => 'trim,required,upper'
 			),
 		),
 	),

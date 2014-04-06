@@ -16,7 +16,8 @@ if (!defined('TYPO3_MODE')) {
 $TCA['tx_vsoevvscout_domain_model_match'] = array(
 	'ctrl' => array(
 		'title'	=> 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_match',
-		'label' => 'gender',
+		'label' => 'matchdate',
+		'label_alt' =>'hometeam,guestteam',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
@@ -234,6 +235,7 @@ $TCA['tx_vsoevvscout_domain_model_player'] = array(
 	'ctrl' => array(
 		'title'	=> 'LLL:EXT:vsoevvscout/Resources/Private/Language/locallang_db.xlf:tx_vsoevvscout_domain_model_player',
 		'label' => 'lastname',
+		'label_alt' =>'firstname,birthdate',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',

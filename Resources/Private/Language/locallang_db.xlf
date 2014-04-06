@@ -4,253 +4,110 @@
 		<header/>
 		<body>
 
-			<trans-unit id="tx_vsoevvscout_domain_model_match">
-				<source>Match</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.gender">
-				<source>Gender</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.matchdate">
-				<source>Matchdate</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.homeset1">
-				<source>Homeset1</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.homeset2">
-				<source>Homeset2</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.homeset3">
-				<source>Homeset3</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.homeset4">
-				<source>Homeset4</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.homeset5">
-				<source>Homeset5</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.homesetgold">
-				<source>Homesetgold</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.guestset1">
-				<source>Guestset1</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.guestset2">
-				<source>Guestset2</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.guestset3">
-				<source>Guestset3</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.guestset4">
-				<source>Guestset4</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.guestset5">
-				<source>Guestset5</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.guestsetgold">
-				<source>Guestsetgold</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.discipline">
-				<source>Discipline</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.competition">
-				<source>Competition</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.homecountry">
-				<source>Homecountry</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.unit">
-				<source>Unit</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.agegroup">
-				<source>Agegroup</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.guestcountry">
-				<source>Guestcountry</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.homecolor">
-				<source>Homecolor</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.guestcolor">
-				<source>Guestcolor</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.homeplayer">
-				<source>Homeplayer</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.guestplayer">
-				<source>Guestplayer</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.weather">
-				<source>Weather</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.sun">
-				<source>Sun</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.surface">
-				<source>Surface</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_match.location">
-				<source>Location</source>
-			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match"><source>Match</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.gender"><source>Gender</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.matchdate"><source>Matchdate</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.homeset1"><source>Homeset1</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.homeset2"><source>Homeset2</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.homeset3"><source>Homeset3</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.homeset4"><source>Homeset4</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.homeset5"><source>Homeset5</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.homesetgold"><source>Homesetgold</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.guestset1"><source>Guestset1</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.guestset2"><source>Guestset2</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.guestset3"><source>Guestset3</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.guestset4"><source>Guestset4</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.guestset5"><source>Guestset5</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.guestsetgold"><source>Guestsetgold</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.discipline"><source>Discipline</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.competition"><source>Competition</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.homecountry"><source>Homecountry</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.unit"><source>Unit</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.agegroup"><source>Agegroup</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.guestcountry"><source>Guestcountry</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.homecolor"><source>Homecolor</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.guestcolor"><source>Guestcolor</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.homeplayer"><source>Homeplayer</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.guestplayer"><source>Guestplayer</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.weather"><source>Weather</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.sun"><source>Sun</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.surface"><source>Surface</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_match.location"><source>Location</source></trans-unit>
 
-			<trans-unit id="tx_vsoevvscout_domain_model_discipline">
-				<source>Discipline</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_discipline.name">
-				<source>Name</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_discipline.short">
-				<source>Short</source>
-			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_discipline"><source>Discipline</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_discipline.name"><source>Name</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_discipline.short"><source>Short</source></trans-unit>
 
-			<trans-unit id="tx_vsoevvscout_domain_model_competition">
-				<source>Competition</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_competition.name">
-				<source>Name</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_competition.short">
-				<source>Short</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_competition.discipline">
-				<source>Discipline</source>
-			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_competition"><source>Competition</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_competition.name"><source>Name</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_competition.short"><source>Short</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_competition.discipline"><source>Discipline</source></trans-unit>
 
-			<trans-unit id="tx_vsoevvscout_domain_model_country">
-				<source>Country</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_country.name">
-				<source>Name</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_country.code">
-				<source>Code</source>
-			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_country"><source>Country</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_country.name"><source>Name</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_country.code"><source>Code</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_country.iso"><source>ISO-Code</source></trans-unit>
 
-			<trans-unit id="tx_vsoevvscout_domain_model_unit">
-				<source>Unit</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_unit.name">
-				<source>Name</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_unit.short">
-				<source>Short</source>
-			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_unit"><source>Unit</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_unit.name"><source>Name</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_unit.short"><source>Short</source></trans-unit>
 
-			<trans-unit id="tx_vsoevvscout_domain_model_agegroup">
-				<source>Agegroup</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_agegroup.name">
-				<source>Name</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_agegroup.short">
-				<source>Short</source>
-			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_agegroup"><source>Agegroup</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_agegroup.name"><source>Name</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_agegroup.short"><source>Short</source></trans-unit>
 
-			<trans-unit id="tx_vsoevvscout_domain_model_color">
-				<source>Color</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_color.name">
-				<source>Name</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_color.short">
-				<source>Short</source>
-			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_color"><source>Color</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_color.name"><source>Name</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_color.short"><source>Short</source></trans-unit>
 
-			<trans-unit id="tx_vsoevvscout_domain_model_player">
-				<source>Player</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_player.lastname">
-				<source>Lastname</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_player.firstname">
-				<source>Firstname</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_player.shirtname">
-				<source>Shirtname</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_player.birthdate">
-				<source>Birthdate</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_player.country">
-				<source>Country</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_player.functionplayer">
-				<source>Functionplayer</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_player.discipline">
-				<source>Discipline</source>
-			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_player"><source>Player</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_player.lastname"><source>Lastname</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_player.firstname"><source>Firstname</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_player.shirtname"><source>Shirtname</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_player.birthdate"><source>Birthdate</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_player.country"><source>Country</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_player.functionplayer"><source>Functionplayer</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_player.discipline"><source>Discipline</source></trans-unit>
 
-			<trans-unit id="tx_vsoevvscout_domain_model_functionplayer">
-				<source>Functionplayer</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_functionplayer.name">
-				<source>Name</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_functionplayer.short">
-				<source>Short</source>
-			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_functionplayer"><source>Functionplayer</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_functionplayer.name"><source>Name</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_functionplayer.short"><source>Short</source></trans-unit>
 
-			<trans-unit id="tx_vsoevvscout_domain_model_weather">
-				<source>Weather</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_weather.name">
-				<source>Name</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_weather.short">
-				<source>Short</source>
-			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_weather"><source>Weather</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_weather.name"><source>Name</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_weather.short"><source>Short</source></trans-unit>
 
-			<trans-unit id="tx_vsoevvscout_domain_model_sun">
-				<source>Sun</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_sun.name">
-				<source>Name</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_sun.short">
-				<source>Short</source>
-			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_sun"><source>Sun</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_sun.name"><source>Name</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_sun.short"><source>Short</source></trans-unit>
 
-			<trans-unit id="tx_vsoevvscout_domain_model_surface">
-				<source>Surface</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_surface.name">
-				<source>Name</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_surface.short">
-				<source>Short</source>
-			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_surface"><source>Surface</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_surface.name"><source>Name</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_surface.short"><source>Short</source></trans-unit>
 
-			<trans-unit id="tx_vsoevvscout_domain_model_address">
-				<source>Address</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_address.city">
-				<source>City</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_address.zip">
-				<source>Zip</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_address.street">
-				<source>Street</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_address.country">
-				<source>Country</source>
-			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_address"><source>Address</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_address.city"><source>City</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_address.zip"><source>Zip</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_address.street"><source>Street</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_address.country"><source>Country</source></trans-unit>
 
-			<trans-unit id="tx_vsoevvscout_domain_model_location">
-				<source>Location</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_location.name">
-				<source>Name</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_location.short">
-				<source>Short</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_location.address">
-				<source>Address</source>
-			</trans-unit>
-			<trans-unit id="tx_vsoevvscout_domain_model_location.country">
-				<source>Country</source>
-			</trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_location"><source>Location</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_location.name"><source>Name</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_location.short"><source>Short</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_location.address"><source>Address</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_location.country"><source>Country</source></trans-unit>
+			
+			<trans-unit id="tx_vsoevvscout_domain_model_team"><source>Team</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_team.name"><source>Name</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_team.homematch"><source>Heimspiele</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_team.guestmatch"><source>Gastspiele</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_team.country"><source>Land</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_team.unit"><source>Kader</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_team.discipline"><source>Disziplin</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_team.agegroup"><source>Altersgruppe</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_team.gender"><source>Geschlecht</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_team.file"><source>Dateien</source></trans-unit>
+			<trans-unit id="tx_vsoevvscout_domain_model_team.player"><source>Spieler</source></trans-unit>
 
 		</body>
 	</file>

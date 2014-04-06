@@ -1,35 +1,64 @@
+<div class="row f16">
 
-<table class="tx-vsoevvscout" >
-	<tr>
-		<td>
-			<f:translate key="tx_vsoevvscout_domain_model_player.lastname" />
-		</td>
-		<td>
-			{player.lastname}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_vsoevvscout_domain_model_player.firstname" />
-		</td>
-		<td>
-			{player.firstname}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_vsoevvscout_domain_model_player.shirtname" />
-		</td>
-		<td>
-			{player.shirtname}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_vsoevvscout_domain_model_player.birthdate" />
-		</td>
-		<td>
-			{player.birthdate -> f:format.date()}
-		</td>
-	</tr>
-</table>
+	<f:if condition='{player.file}' >	
+		<div class="col-lg-4 col-md-6 col-sm-12">
+			<div class="panel panel-info">
+				<div class="panel-heading"><f:format.crop respectWordBoundaries="false" maxCharacters="45" append="&nbsp;[...]">{player.firstname} {player.lastname}, {player.birthdate -> f:format.date()}</f:format.crop></div>
+				<div class="panel-body">
+					<f:for each="{player.file}" as="file" >
+						<f:render partial="Match/File" arguments="{file:file}" />
+					</f:for>
+				</div>
+			</div>	
+		</div>
+	</f:if>	
+	
+	<f:for each="{player.team}" as="team">
+		<f:if condition='{team.file}' >
+			<div class="col-lg-4 col-md-6 col-sm-12 ">	
+				<div class="panel panel-success">
+						<div class="panel-heading"><f:format.crop respectWordBoundaries="false" maxCharacters="45" append="&nbsp;[...]"><f:render partial="Country/Flag" arguments="{country:team.country}" /> {team.name} ({team.country.code})</f:format.crop></div>
+					<div class="panel-body">
+						<f:for each="{team.file}" as="file" >
+							<f:render partial="Match/File" arguments="{file:file}" />
+						</f:for>
+					</div>
+				</div>	
+			</div>
+		</f:if>
+
+		<f:for each="{team.homematch}" as="match">
+			<f:if condition='{match.file}' >	
+				<div class="col-lg-4 col-md-6 col-sm-12 ">
+					<div class="panel panel-primary">
+						<div class="panel-heading"><f:format.crop respectWordBoundaries="false" maxCharacters="45" append="&nbsp;[...]">{match.matchdate -> f:format.date()} <f:render partial="Country/Flag" arguments="{country : match.hometeam.country}" /> {match.hometeam.name} - <f:render partial="Country/Flag" arguments="{country : match.guestteam.country}" /> {match.guestteam.name}</f:format.crop></div>
+						<div class="panel-body">
+							<f:for each="{match.file}" as="file" >
+								<f:render partial="Match/File" arguments="{file:file}" />
+							</f:for>
+						</div>
+					</div> 
+				</div>
+			</f:if>	
+		</f:for>
+		
+		<f:for each="{team.guestmatch}" as="match">
+			<f:if condition='{match.file}' >	
+				<div class="col-lg-4 col-md-6 col-sm-12 ">
+					<div class="panel panel-primary">
+						<div class="panel-heading"><f:format.crop respectWordBoundaries="false" maxCharacters="45" append="&nbsp;[...]">{match.matchdate -> f:format.date()} <f:render partial="Country/Flag" arguments="{country : match.hometeam.country}" /> {match.hometeam.name} - <f:render partial="Country/Flag" arguments="{country : match.guestteam.country}" /> {match.guestteam.name}</f:format.crop></div>
+						<div class="panel-body">
+							<f:for each="{match.file}" as="file" >
+								<f:render partial="Match/File" arguments="{file:file}" />
+							</f:for>
+						</div>
+					</div> 
+				</div>
+			</f:if>	
+		</f:for>
+	</f:for>
+
+	
+
+</div>	 
+<br />

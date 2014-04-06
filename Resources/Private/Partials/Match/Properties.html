@@ -1,43 +1,77 @@
 {namespace vh=Volleyballserver\Vsoevvscout\ViewHelpers} 
-
-<h3 class="red">Nr.:  {match.uid} <f:translate key="tx_vsoevvscout_domain_model_match.gender{match.gender}" /></h3>
- {match.matchdate -> f:format.date()}  {match.hometeam.name} ({match.hometeam.country.code}) - {match.guestteam.name}({match.guestteam.country.code}) {match.result} <br />
-<br /> 
-<div class="row">
-	<div class="col-lg-4 col-md-6 col-sm-12 br-grew">
-	
-		<h3>Files assigned to the match</h3>
-		<f:for each="{match.file}" as="file" >
-			<f:render partial="Match/File" arguments="{file:file}" />
-		</f:for> 
-	</div>
-	<div class="col-lg-4 col-md-6 col-sm-12 br-grew">
-		<h3>Files assigned to {match.hometeam.name}</h3>
-		<f:for each="{match.hometeam.file}" as="file" >
-			<f:render partial="Match/File" arguments="{file:file}" />
-		</f:for> 
+<div class="row f16">
+	<div class="col-lg-4 col-md-6 col-sm-12">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<f:format.crop respectWordBoundaries="false" maxCharacters="45" append="&nbsp;[...]"> 
+					{match.matchdate -> f:format.date()} <f:render partial="Country/Flag" arguments="{country : match.hometeam.country}" /> 
+					{match.hometeam.name} - <f:render partial="Country/Flag" arguments="{country : match.guestteam.country}" /> {match.guestteam.name}
+				</f:format.crop>				
+			</div>
+			<div class="panel-body">
+				<f:for each="{match.file}" as="file" >
+					<f:render partial="Match/File" arguments="{file:file}" />
+				</f:for> 
+			</div>
+		</div>
+</div>
+	<div class="col-lg-4 col-md-6 col-sm-12">
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				<f:format.crop respectWordBoundaries="false" maxCharacters="45" append="&nbsp;[...]"> 
+						<f:render partial="Country/Flag" arguments="{country : match.hometeam.country}" /> {match.hometeam.name}
+				</f:format.crop></div>
+			<div class="panel-body">
+				<f:for each="{match.hometeam.file}" as="file" >
+					<f:render partial="Match/File" arguments="{file:file}" />
+				</f:for>
+			</div>
+		</div>
 	</div>
 	<f:for each="{match.hometeam.player}" as="player">
-		<div class="col-lg-4 col-md-6 col-sm-12 br-grew">
-			<h3>Files assigned to {player.lastname}</h3>
-			<f:for each="{player.file}" as="file" >
-				<f:render partial="Match/File" arguments="{file:file}" />
-			</f:for> 
+		<div class="col-lg-4 col-md-6 col-sm-12 ">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<f:format.crop respectWordBoundaries="false" maxCharacters="45" append="&nbsp;[...]"> 
+						{player.firstname} {player.lastname}
+					</f:format.crop>
+				</div>
+				<div class="panel-body">
+					<f:for each="{player.file}" as="file" >
+						<f:render partial="Match/File" arguments="{file:file}" />
+					</f:for>
+				</div>
+			</div>
 		</div>
 	</f:for>	
-	<div class="col-lg-4 col-md-6 col-sm-12 br-grew">
-		<h3>Files assigned to {match.guestteam.name}</h3>
-		<f:for each="{match.guestteam.file}" as="file" >
-			<f:render partial="Match/File" arguments="{file:file}" />
-		</f:for>
+	<div class="col-lg-4 col-md-6 col-sm-12 ">
+			<div class="panel panel-success">
+			<div class="panel-heading">
+				<f:format.crop respectWordBoundaries="false" maxCharacters="45" append="&nbsp;[...]"> 
+						<f:render partial="Country/Flag" arguments="{country : match.guestteam.country}" /> {match.guestteam.name}
+				</f:format.crop></div>
+			<div class="panel-body">
+				<f:for each="{match.guestteam.file}" as="file" >
+					<f:render partial="Match/File" arguments="{file:file}" />
+				</f:for>
+			</div>
+		</div>
 	</div>
 	
 	<f:for each="{match.guestteam.player}" as="player">
-		<div class="col-lg-4 col-md-6 col-sm-12 br-grew">
-			<h3>Files assigned to {player.lastname}</h3>
-			<f:for each="{player.file}" as="file" >
-				<f:render partial="Match/File" arguments="{file:file}" />
-			</f:for> 
+		<div class="col-lg-4 col-md-6 col-sm-12 ">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<f:format.crop respectWordBoundaries="false" maxCharacters="45" append="&nbsp;[...]"> 
+						{player.firstname} {player.lastname}
+					</f:format.crop>
+				</div>
+				<div class="panel-body">
+					<f:for each="{player.file}" as="file" >
+						<f:render partial="Match/File" arguments="{file:file}" />
+					</f:for>
+				</div>
+			</div>
 		</div>
 	</f:for>	
 </div>	 

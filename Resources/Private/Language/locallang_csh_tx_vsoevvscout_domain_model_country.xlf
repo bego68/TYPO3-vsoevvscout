@@ -10,6 +10,9 @@
 			<trans-unit id="code.description">
 				<source>Code</source>
 			</trans-unit>
+			<trans-unit id="iso.description">
+				<source>ISO-Code</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

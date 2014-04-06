@@ -509,5 +509,3 @@ $TCA['tx_vsoevvscout_domain_model_match'] = array(
 		),
 	),
 );
-
-?>

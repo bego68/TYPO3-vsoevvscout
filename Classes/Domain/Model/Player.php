@@ -27,6 +27,8 @@ namespace Volleyballserver\Vsoevvscout\Domain\Model;
 
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use Volleyballserver\Vsoevvscout\Domain\Model\Team;
+
 /**
  *
  *
@@ -86,6 +88,13 @@ class Player extends AbstractEntity {
 	protected $discipline;
 	
 	/**
+	 * Team
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Team>
+	 */
+	protected $team;
+	
+	/**
 	 * file
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
@@ -117,6 +126,7 @@ class Player extends AbstractEntity {
 		 */
 		$this->discipline = new ObjectStorage();
 		$this->file = new ObjectStorage();
+		$this->team = new ObjectStorage();
 	}
 
 	/**
@@ -327,4 +337,56 @@ class Player extends AbstractEntity {
 	public function getFile() {
 		return $this->file;
 	}
+	
+	/**
+	 * get the number of Files
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+	 */
+	public function getCountFile() {
+		return $this->file->count();;
+	}
+	
+	
+	/**
+	 * add a team
+	 *
+	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Team $team
+	 * @return void
+	 */
+	public function addTeam(Team $teamToRemove) {
+	
+		$this->team->attach($teamToRemove);
+	}
+
+	/**
+	 * Removes a team
+	 *
+	 * @param \Volleyballserver\Vsoevvscout\Domain\Model\Team $team
+	 * @return void
+	 */
+	public function removeTeam(Team $teamToRemove) {
+	
+		$this->team->detach($teamToRemove);
+	}
+	/**
+	 * sets  Team
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Team> $team
+	 *
+	 * @return void
+	 */
+	public function setTeam(ObjectStorage $team) {
+		$this->team = $team;
+	}
+	
+	/**
+	 * get the Teams
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Volleyballserver\Vsoevvscout\Domain\Model\Team>
+	 */
+	public function getTeam() {
+		return $this->team;
+	}
+
 }

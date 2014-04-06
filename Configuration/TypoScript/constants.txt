@@ -1,14 +1,15 @@
-
 plugin.tx_vsoevvscout {
 	view {
 		# cat=plugin.tx_vsoevvscout/file; type=string; label=Path to template root (FE)
 		templateRootPath = EXT:vsoevvscout/Resources/Private/Templates/
 		# cat=plugin.tx_vsoevvscout/file; type=string; label=Path to template partials (FE)
-		partialRootPath = EXT:vsoevvscout/Resources/Private/Partials/
+					partialRootPath = EXT:vsoevvscout/Resources/Private/Partials/
 		# cat=plugin.tx_vsoevvscout/file; type=string; label=Path to template layouts (FE)
 		layoutRootPath = EXT:vsoevvscout/Resources/Private/Layouts/
 		# cat=plugin.tx_vsoevvscout/file; type=string; label=Path to css-file (FE)
-		cssFile = EXT:vsoevvscout/Resources/Public/Css/Vsoevvscout.css
+		cssFile = EXT:vsoevvscout/Resources/Public/Css/flags16.css
+		cssFlag16File = EXT:vsoevvscout/Resources/Public/Css/Vsoevvscout.css 
+		cssFlag32File = EXT:vsoevvscout/Resources/Public/Css/flags32.css
 				
 	}
 	persistence {

@@ -1,4 +1,4 @@
-.tx-vsoevvscout input.set{
+blue.tx-vsoevvscout input.set{
 	width:	60px;
 	font-size:	12px;
 	
@@ -9,7 +9,7 @@
 }
 
 .blue{
-	color: #aaf;	
+	color: #428bca;	
 }
 
 .orange{
@@ -33,9 +33,27 @@
 	color: #a02;
 	
 }
+.row .panel{
+	background-color: #222;
+}
 
-.csc-default{
+.row .panel-heading{
+	overflow: hidden;
+}
+
+.panel-heading h3{
+	margin: 5px 20px;
+	display: inline-block;
+}
+.row .panel-body{
+	word-wrap:break-word;
+	height: 200px;
+	overflow: auto;
+}
+
+.tx-vsoevvscout{
 	font-size: 1.0rem;
+	line-height: 1.4rem;
 }
 
 gross{
@@ -83,3 +101,32 @@ textarea.f3-form-error {
 		background:#000;
 		padding:3px 8px;
 	}
+	
+	
+	
+	.f3-widget-paginator{
+		list-style-type:none;
+	}
+	
+	.f3-widget-paginator li{
+		float: left;
+		margin: 15px 8px;
+	}
+.f3-widget-paginator li.current,
+.f3-widget-paginator li a{
+		display: block;
+		padding: 8px 12px;
+		font-size: 16px;
+		line-height: 1.33;
+		border-radius: 6px;
+		background-color: #222222;
+		border-color: #444444;
+}
+
+.clearboth{
+	clear: both;
+}
+
+a .btn-default{
+	color: #428bca;	
+}
